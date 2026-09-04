@@ -37,6 +37,7 @@
   .restormania {
     width: 100%;
     height: auto;
+    min-height: clamp(72px, 18vw, 241px);
     font-size: clamp(48px, 15.5vw, 201px);
     justify-content: center;
     text-align: center;

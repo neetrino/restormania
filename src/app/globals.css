@@ -6,7 +6,7 @@
   --color-border-muted: rgba(0, 0, 0, 0.4);
   --color-footer-muted: rgba(255, 255, 255, 0.4);
   --font-body: var(--font-noto-armenian), "Noto Sans Armenian", system-ui, sans-serif;
-  --font-display: var(--font-mirage), "Mirage", var(--font-bebas), "Bebas Neue", Impact, sans-serif;
+  --font-display: var(--font-mirage), "Mirage Expanded", "Mirage", Impact, sans-serif;
   --font-ui: var(--font-montserrat), "Montserrat", var(--font-body);
   --font-headline: var(--font-braind-republic), "Braind Republic", var(--font-body);
   --radius-pill: 999px;

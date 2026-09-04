@@ -21,6 +21,13 @@ const bebasNeue = Bebas_Neue({
   weight: "400",
 });
 
+const mirageExpanded = localFont({
+  src: "../fonts/Mirage-Expanded.otf",
+  variable: "--font-mirage",
+  display: "swap",
+  weight: "400",
+});
+
 const braindRepublic = localFont({
   src: "../fonts/BraindRepublic-Regular.otf",
   variable: "--font-braind-republic",
@@ -38,7 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="hy"
-      className={`${notoArmenian.variable} ${montserrat.variable} ${bebasNeue.variable} ${braindRepublic.variable}`}
+      className={`${notoArmenian.variable} ${montserrat.variable} ${bebasNeue.variable} ${mirageExpanded.variable} ${braindRepublic.variable}`}
     >
       <body>{children}</body>
     </html>
