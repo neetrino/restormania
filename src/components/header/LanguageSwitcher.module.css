@@ -1,0 +1,39 @@
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 4px;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.divider {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--color-border-muted);
+}
+
+.button {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--color-black);
+  opacity: 0.45;
+  transition: opacity 0.2s ease;
+}
+
+.button[aria-pressed="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.button:hover {
+  opacity: 0.8;
+}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PillLink } from "@/components/ui/PillLink";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import styles from "./Header.module.css";
 
 const NAV_LINKS = [
@@ -39,6 +40,7 @@ export function Header() {
           <PillLink href="#projects" variant="solid">
             Kamancha
           </PillLink>
+          <LanguageSwitcher />
         </div>
       </div>
     </header>

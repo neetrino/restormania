@@ -127,8 +127,13 @@
   text-align: center;
 }
 
-.copyright strong {
+.credit {
   font-weight: 700;
+  color: var(--color-white);
+}
+
+.credit:hover {
+  opacity: 0.85;
 }
 
 @media (max-width: 900px) {

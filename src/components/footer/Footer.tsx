@@ -111,8 +111,15 @@ export function Footer() {
         </div>
 
         <p className={styles.copyright}>
-          Copyright © 2026 | Բոլոր իրավունքները պաշտպանված են | Ստեղծվել է{" "}
-          <strong>Neetrino IT Company</strong> կողմից
+          Copyright © 2026 | All rights reserved | Created by{" "}
+          <a
+            className={styles.credit}
+            href="https://neetrino.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Neetrino IT Company
+          </a>
         </p>
       </div>
     </footer>
