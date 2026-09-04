@@ -1,0 +1,130 @@
+.section {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: 24px 40px 80px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 344px minmax(280px, 562px) 420px;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+}
+
+.portrait {
+  margin: 0;
+  width: 100%;
+  max-width: 344px;
+  height: 488px;
+  border: 6px solid var(--color-black);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-black);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  min-height: 488px;
+  padding: 56px 40px;
+  border-radius: var(--radius-card);
+  background: var(--color-black);
+}
+
+.bio {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23px;
+  color: var(--color-yellow);
+  white-space: pre-line;
+}
+
+.stack {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 488px;
+}
+
+.stackFront,
+.stackBack {
+  position: absolute;
+  top: 0;
+}
+
+.stackFront {
+  left: 0;
+  z-index: 2;
+}
+
+.stackBack {
+  left: 76px;
+  z-index: 1;
+}
+
+@media (max-width: 1100px) {
+  .row {
+    grid-template-columns: 280px minmax(240px, 1fr) 320px;
+    gap: 16px;
+  }
+
+  .portrait,
+  .stack {
+    height: 420px;
+  }
+
+  .card {
+    min-height: 420px;
+    padding: 40px 28px;
+  }
+
+  .stackBack {
+    left: 48px;
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: 16px 20px 64px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .stack {
+    display: none;
+  }
+
+  .portrait {
+    max-width: 320px;
+    height: 440px;
+  }
+
+  .card {
+    width: 100%;
+    min-height: auto;
+  }
+}

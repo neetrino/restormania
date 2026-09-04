@@ -21,6 +21,7 @@ coverage/
 npm-debug.log*
 tmp/
 temp/
+.tmp/
 .cache/
 
 # IDE (optional, uncomment if needed)

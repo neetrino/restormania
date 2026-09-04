@@ -1,0 +1,5 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-yellow);
+  color: var(--color-black);
+}
