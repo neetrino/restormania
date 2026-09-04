@@ -49,9 +49,7 @@ export function Footer() {
   return (
     <footer className={styles.footer} id="contact">
       <div className={styles.inner}>
-        <h2 className={styles.headline} id="projects">
-          Երկու վայր, մեկ պատմություն
-        </h2>
+        <h2 className={styles.headline}>Երկու վայր, մեկ պատմություն</h2>
 
         <div className={styles.columns}>
           <div className={styles.colStart}>

@@ -1,4 +1,5 @@
 import { AboutSection } from "@/components/about/AboutSection";
+import { BrandBanners } from "@/components/brands/BrandBanners";
 import { Footer } from "@/components/footer/Footer";
 import { FounderSection } from "@/components/founder/FounderSection";
 import { Header } from "@/components/header/Header";
@@ -11,6 +12,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <BrandBanners />
         <AboutSection />
         <FounderSection />
       </main>
