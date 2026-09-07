@@ -66,6 +66,10 @@
   gap: clamp(12px, 1.5vw, 22px);
 }
 
+.kamancha .copy {
+  align-items: flex-start;
+}
+
 .pidehLogo {
   width: clamp(120px, 11vw, 163px);
   height: auto;
