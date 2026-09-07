@@ -1,0 +1,458 @@
+.section {
+  --stage-height: clamp(300px, 29vw, 415px);
+  --panel-height: clamp(220px, 21vw, 307px);
+  width: 100%;
+  padding: 8px 0 40px;
+  overflow: hidden;
+}
+
+.stage {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
+  height: var(--stage-height);
+}
+
+.banner {
+  position: absolute;
+  top: 50%;
+  width: min(52vw, 720px);
+  height: var(--panel-height);
+  opacity: 0;
+  transform: translate(0, -50%);
+  will-change: transform, opacity;
+}
+
+.pideh {
+  left: -4vw;
+  transform: translate(-72%, -50%);
+}
+
+.kamancha {
+  right: -4vw;
+  transform: translate(72%, -50%);
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.pideh .panel {
+  justify-content: flex-start;
+  padding-left: clamp(48px, 8vw, 120px);
+  padding-right: 22%;
+  background: var(--color-pideh);
+  border-radius: 24px 190px 190px 24px;
+}
+
+.kamancha .panel {
+  justify-content: flex-end;
+  padding-right: clamp(48px, 8vw, 120px);
+  padding-left: 22%;
+  background: var(--color-kamancha);
+  border-radius: 190px 24px 24px 190px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 1.5vw, 22px);
+}
+
+.kamancha .copy {
+  align-items: flex-start;
+}
+
+.pidehLogo {
+  width: clamp(120px, 11vw, 163px);
+  height: auto;
+}
+
+.kamanchaLogo {
+  width: clamp(160px, 15vw, 230px);
+  height: auto;
+}
+
+.kamanchaLogoOnTop {
+  display: none;
+}
+
+.moreDesktop {
+  display: inline-flex;
+}
+
+.media {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46%;
+  height: 120%;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.pidehMedia {
+  right: -2%;
+}
+
+.kamanchaMedia {
+  left: -2%;
+}
+
+.pidehImage {
+  width: clamp(300px, 32vw, 460px);
+  height: auto;
+  max-width: none;
+  transform: rotate(-90deg) scaleX(-1);
+  object-fit: cover;
+  transform-origin: center center;
+  animation: pidehDrift 5s ease-in-out 1.8s infinite;
+}
+
+.pidehImageMobile {
+  display: none;
+}
+
+.kamanchaImage {
+  width: clamp(300px, 34vw, 490px);
+  height: auto;
+  max-height: 415px;
+  max-width: none;
+  transform: rotate(-68.89deg);
+  object-fit: contain;
+  transform-origin: center center;
+  animation: kamanchaDrift 5.6s ease-in-out 2s infinite;
+}
+
+.kamanchaImageMobile {
+  display: none;
+}
+
+.arrowCta {
+  display: none;
+}
+
+.brandFilters {
+  display: none;
+}
+
+@keyframes pidehDrift {
+  0%,
+  100% {
+    translate: -6px 8px;
+    rotate: -2.5deg;
+  }
+
+  50% {
+    translate: 8px -6px;
+    rotate: 2.5deg;
+  }
+}
+
+@keyframes kamanchaDrift {
+  0%,
+  100% {
+    translate: 6px 8px;
+    rotate: 2.5deg;
+  }
+
+  50% {
+    translate: -8px -6px;
+    rotate: -2.5deg;
+  }
+}
+
+/*
+ * Inside the 1440px scaled canvas, vw would use the real iPad width and
+ * stretch the layout. Lock to the desktop-at-1440 pixel values instead.
+ */
+@media (min-width: 744px) and (max-width: 1439px) {
+  .section {
+    --stage-height: 415px;
+    --panel-height: 302px;
+  }
+
+  .stage {
+    width: 1440px;
+    left: 50%;
+    margin-left: -720px;
+  }
+
+  .banner {
+    width: 720px;
+  }
+
+  .pideh {
+    left: -58px;
+  }
+
+  .kamancha {
+    right: -58px;
+  }
+
+  .pideh .panel,
+  .kamancha .panel {
+    padding-left: 115px;
+    padding-right: 22%;
+  }
+
+  .kamancha .panel {
+    padding-right: 115px;
+    padding-left: 22%;
+  }
+
+  .copy {
+    gap: 22px;
+  }
+
+  .pidehLogo {
+    width: 158px;
+  }
+
+  .kamanchaLogo {
+    width: 216px;
+  }
+
+  .pidehImage {
+    width: 460px;
+  }
+
+  .kamanchaImage {
+    width: 490px;
+  }
+}
+
+/* Phones only */
+@media (max-width: 743px) {
+  .section {
+    --panel-height: 199px;
+    padding: 8px 12px 32px;
+    overflow: visible;
+  }
+
+  .stage {
+    width: 100%;
+    left: auto;
+    margin-left: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+    padding: 48px 0 8px;
+    overflow: visible;
+  }
+
+  .banner,
+  .pideh,
+  .kamancha {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: min(100%, 426px);
+    height: var(--panel-height);
+    min-height: var(--panel-height);
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+    overflow: visible;
+  }
+
+  .pideh {
+    clip-path: inset(-80px -8% 0 0 round 60px);
+  }
+
+  .kamancha {
+    clip-path: inset(-28px 0 0 0 round 60px);
+    border-radius: 60px;
+  }
+
+  .panel {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: visible;
+    align-items: stretch;
+  }
+
+  .pideh .panel,
+  .kamancha .panel {
+    justify-content: flex-start;
+    padding: 0;
+    border-radius: 60px;
+  }
+
+  .copy {
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .pidehLogo {
+    position: absolute;
+    top: -32px;
+    left: 24px;
+    width: 139px;
+  }
+
+  .kamanchaLogo {
+    width: 200px;
+  }
+
+  .kamanchaLogoInFlow {
+    display: none;
+  }
+
+  .kamanchaLogoOnTop {
+    display: block;
+    position: absolute;
+    top: -18px;
+    left: 28px;
+    z-index: 6;
+    width: 200px;
+    height: auto;
+  }
+
+  .moreDesktop {
+    display: none;
+  }
+
+  .arrowCta {
+    position: absolute;
+    left: 34px;
+    top: 116px;
+    bottom: auto;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--color-white);
+  }
+
+  .arrowCta img {
+    width: 35px;
+    height: 35px;
+    transform: scaleY(-1);
+  }
+
+  .media {
+    position: absolute;
+    z-index: 3;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .pidehMedia {
+    top: -78px;
+    left: 14%;
+    right: -16%;
+    width: auto;
+    height: auto;
+    aspect-ratio: 330 / 300;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    transform: none;
+  }
+
+  .kamanchaMedia {
+    top: 8px;
+    left: 30%;
+    right: -32%;
+    bottom: -28px;
+    width: auto;
+    height: auto;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    transform: none;
+  }
+
+  /* Panel below tray; floating logo/CTA sit above the image */
+  .kamancha .panel {
+    z-index: 1;
+  }
+
+  .kamancha .arrowCta {
+    z-index: 5;
+  }
+
+  .pidehImage,
+  .kamanchaImage {
+    max-height: none;
+    animation: none;
+  }
+
+  .pidehImageDesktop,
+  .kamanchaImageDesktop {
+    display: none;
+  }
+
+  .pidehImageMobile {
+    display: block;
+    width: 138%;
+    height: 138%;
+    max-width: none;
+    object-fit: contain;
+    transform: rotate(42deg) scaleX(-1);
+  }
+
+  .kamanchaImageMobile {
+    display: block;
+    width: min(92vw, 400px);
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: right center;
+    transform: scaleX(-1) rotate(-6deg);
+  }
+
+  .brandFilters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 34px;
+    padding: 0 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pideh,
+  .kamancha {
+    opacity: 1 !important;
+    transform: translate(0, -50%) !important;
+  }
+
+  .pidehImage,
+  .kamanchaImage {
+    animation: none;
+  }
+}
+
+@media (max-width: 743px) and (prefers-reduced-motion: reduce) {
+  .pideh,
+  .kamancha {
+    transform: none !important;
+  }
+}

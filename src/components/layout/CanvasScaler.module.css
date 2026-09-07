@@ -1,0 +1,21 @@
+.viewport {
+  width: 100%;
+  overflow-x: clip;
+}
+
+.canvas {
+  width: 100%;
+}
+
+.canvasActive {
+  position: relative;
+}
+
+/* Same desktop artboard as JS scaler — CSS fallback before hydrate */
+@media (min-width: 744px) and (max-width: 1439px) {
+  .canvas {
+    width: 1440px;
+    transform: scale(calc(100vw / 1440));
+    transform-origin: top left;
+  }
+}
