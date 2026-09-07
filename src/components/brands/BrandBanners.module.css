@@ -80,6 +80,10 @@
   height: auto;
 }
 
+.kamanchaLogoOnTop {
+  display: none;
+}
+
 .moreDesktop {
   display: inline-flex;
 }
@@ -306,10 +310,21 @@
   }
 
   .kamanchaLogo {
+    width: 200px;
+  }
+
+  .kamanchaLogoInFlow {
+    display: none;
+  }
+
+  .kamanchaLogoOnTop {
+    display: block;
     position: absolute;
     top: -18px;
     left: 28px;
+    z-index: 6;
     width: 200px;
+    height: auto;
   }
 
   .moreDesktop {
@@ -371,6 +386,15 @@
     align-items: center;
     justify-content: flex-end;
     transform: none;
+  }
+
+  /* Panel below tray; floating logo/CTA sit above the image */
+  .kamancha .panel {
+    z-index: 1;
+  }
+
+  .kamancha .arrowCta {
+    z-index: 5;
   }
 
   .pidehImage,

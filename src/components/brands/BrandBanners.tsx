@@ -223,19 +223,28 @@ export function BrandBanners() {
                 alt="Kamancha"
                 width={230}
                 height={110}
-                className={styles.kamanchaLogo}
+                className={`${styles.kamanchaLogo} ${styles.kamanchaLogoInFlow}`}
                 unoptimized
               />
               <PillLink href="#about" size="md" className={styles.moreDesktop}>
                 {t.brands.more}
               </PillLink>
-              <ArrowCta
-                href="#about"
-                label={t.brands.more}
-                arrowSrc="/assets/arrow-up-right-kamancha.svg"
-              />
             </div>
           </div>
+          <Image
+            src="/assets/kamancha-logo.svg"
+            alt=""
+            width={230}
+            height={110}
+            className={`${styles.kamanchaLogo} ${styles.kamanchaLogoOnTop}`}
+            unoptimized
+            aria-hidden
+          />
+          <ArrowCta
+            href="#about"
+            label={t.brands.more}
+            arrowSrc="/assets/arrow-up-right-kamancha.svg"
+          />
         </article>
       </div>
 
