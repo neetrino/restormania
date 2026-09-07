@@ -1,27 +1,37 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
   width: 100%;
-  background: color-mix(in srgb, var(--color-yellow) 92%, transparent);
-  backdrop-filter: blur(8px);
+  padding: 12px 24px 0;
+  background: transparent;
 }
 
-.inner {
+.shell {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: min(100%, var(--layout-max));
   height: var(--header-height);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 28px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  transition:
+    background 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.shellScrolled {
+  background: var(--color-white);
+  box-shadow: 0 4px 24px rgba(1, 0, 0, 0.12);
 }
 
 .logo {
   display: flex;
   flex-shrink: 0;
-  width: 82px;
-  height: 66px;
+  width: 86px;
+  height: 56px;
   overflow: hidden;
 }
 
@@ -57,13 +67,16 @@
 }
 
 @media (max-width: 960px) {
-  .inner {
-    padding: 0 20px;
+  .header {
+    padding: 8px 12px 0;
+  }
+
+  .shell {
     height: auto;
     min-height: var(--header-height);
+    padding: 12px 16px;
     flex-wrap: wrap;
     gap: 12px;
-    padding-block: 12px;
   }
 
   .nav {

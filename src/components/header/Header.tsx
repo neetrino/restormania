@@ -1,33 +1,85 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState, type MouseEvent } from "react";
 import { PillLink } from "@/components/ui/PillLink";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import styles from "./Header.module.css";
 
 const NAV_LINKS = [
-  { href: "#home", label: "Գլխավոր" },
   { href: "#about", label: "Restormania-ի մասին" },
   { href: "#founder", label: "Հիմնադիր" },
-  { href: "#projects", label: "Նախագծեր" },
+  { href: "#top", label: "Նախագծեր" },
 ] as const;
 
+const SCROLL_THRESHOLD_PX = 12;
+
+function scrollToPageTop(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.history.replaceState(null, "", "#top");
+}
+
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    let rafId = 0;
+
+    const update = () => {
+      const next = window.scrollY > SCROLL_THRESHOLD_PX;
+      setScrolled((prev) => (prev === next ? prev : next));
+    };
+
+    const onScroll = () => {
+      if (rafId) {
+        return;
+      }
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        update();
+      });
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, []);
+
   return (
     <header className={styles.header}>
-      <div className={styles.inner}>
-        <a className={styles.logo} href="#home" aria-label="Restormania">
+      <div
+        className={`${styles.shell} ${scrolled ? styles.shellScrolled : ""}`}
+      >
+        <a
+          className={styles.logo}
+          href="#top"
+          aria-label="Restormania"
+          onClick={scrollToPageTop}
+        >
           <Image
-            src="/assets/header-logo.svg"
+            src="/assets/header-logo-pill.png"
             alt=""
-            width={82}
-            height={66}
+            width={86}
+            height={56}
             priority
-            unoptimized
           />
         </a>
 
         <nav className={styles.nav} aria-label="Հիմնական">
           {NAV_LINKS.map((link) => (
-            <a key={link.href} className={styles.navLink} href={link.href}>
+            <a
+              key={link.label}
+              className={styles.navLink}
+              href={link.href}
+              onClick={link.href === "#top" ? scrollToPageTop : undefined}
+            >
               {link.label}
             </a>
           ))}
