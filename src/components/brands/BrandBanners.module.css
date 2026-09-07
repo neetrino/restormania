@@ -122,6 +122,18 @@
   animation: kamanchaDrift 5.6s ease-in-out 2s infinite;
 }
 
+.kamanchaImageMobile {
+  display: none;
+}
+
+.arrowCta {
+  display: none;
+}
+
+.brandFilters {
+  display: none;
+}
+
 @keyframes pidehDrift {
   0%,
   100% {
@@ -150,9 +162,8 @@
 
 @media (max-width: 900px) {
   .section {
-    --stage-height: auto;
-    --panel-height: 220px;
-    padding: 16px 20px 40px;
+    --panel-height: 199px;
+    padding: 8px 0 32px;
     overflow: visible;
   }
 
@@ -163,7 +174,10 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    align-items: center;
+    gap: 56px;
+    padding: 40px 0 8px;
+    overflow: visible;
   }
 
   .banner,
@@ -173,61 +187,123 @@
     top: auto;
     left: auto;
     right: auto;
-    width: 100%;
-    height: auto;
-    min-height: 260px;
+    width: min(100%, 426px);
+    height: var(--panel-height);
+    min-height: var(--panel-height);
     opacity: 1 !important;
     transform: none !important;
-    display: flex;
-    flex-direction: column;
     will-change: auto;
-  }
-
-  .kamancha {
-    flex-direction: column-reverse;
+    overflow: visible;
   }
 
   .panel {
-    position: relative;
-    width: min(100%, 420px);
-    height: var(--panel-height);
-    margin: 0 auto;
-    padding: 24px;
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    align-items: stretch;
   }
 
   .pideh .panel,
   .kamancha .panel {
-    border-radius: 24px 110px 110px 24px;
+    justify-content: flex-start;
+    padding: 0;
+    border-radius: 60px;
   }
 
-  .kamancha .panel {
-    border-radius: 110px 24px 24px 110px;
+  .copy {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .pidehLogo {
+    position: absolute;
+    top: -28px;
+    left: 28px;
+    width: 120px;
+  }
+
+  .kamanchaLogo {
+    position: absolute;
+    top: -18px;
+    left: 24px;
+    width: 170px;
+  }
+
+  .arrowCta {
+    position: absolute;
+    left: 34px;
+    bottom: 16px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--color-white);
+  }
+
+  .arrowCta img {
+    width: 35px;
+    height: 35px;
   }
 
   .media {
-    position: relative;
-    top: auto;
+    position: absolute;
+    top: 50%;
+    width: 62%;
+    height: 140%;
+    margin: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .pidehMedia {
+    right: -8%;
     left: auto;
-    right: auto;
-    width: 100%;
-    height: auto;
-    margin-top: -36px;
-    transform: none;
+  }
+
+  .kamanchaMedia {
+    right: -6%;
+    left: auto;
   }
 
   .pidehImage,
   .kamanchaImage {
-    width: min(72vw, 360px);
+    width: min(70vw, 300px);
     max-height: none;
     animation: none;
   }
 
   .pidehImage {
-    transform: rotate(-90deg) scaleX(-1);
+    transform: rotate(-28deg) scaleX(-1);
   }
 
-  .kamanchaImage {
-    transform: rotate(-40deg);
+  .kamanchaImageDesktop {
+    display: none;
+  }
+
+  .kamanchaImageMobile {
+    display: block;
+    width: min(72vw, 290px);
+    max-width: none;
+    height: auto;
+    transform: none;
+    object-fit: contain;
+    border-radius: 35px;
+  }
+
+  .brandFilters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding: 0 20px;
   }
 }
 

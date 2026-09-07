@@ -58,14 +58,31 @@
 
   .grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
+    justify-items: start;
+  }
+
+  .visual {
+    justify-content: flex-start;
   }
 
   .logo {
-    max-width: 360px;
+    max-width: 267px;
+    transform: rotate(-8deg);
+    transform-origin: left center;
   }
 
   .copy {
     padding-top: 0;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .text {
+    max-width: 100%;
+  }
+
+  .text + .text {
+    display: none;
   }
 }

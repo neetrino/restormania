@@ -13,6 +13,22 @@ const LERP = 0.1;
 
 const easeOutCubic = (t: number): number => 1 - (1 - t) ** 3;
 
+function ArrowCta({
+  href,
+  label,
+  arrowSrc,
+}: {
+  href: string;
+  label: string;
+  arrowSrc: string;
+}) {
+  return (
+    <a className={styles.arrowCta} href={href} aria-label={label}>
+      <Image src={arrowSrc} alt="" width={35} height={35} unoptimized />
+    </a>
+  );
+}
+
 export function BrandBanners() {
   const { t } = useTranslation();
   const pidehRef = useRef<HTMLElement>(null);
@@ -35,11 +51,11 @@ export function BrandBanners() {
         return;
       }
 
-      if (reducedRef.current) {
+      if (reducedRef.current || window.innerWidth <= 900) {
         pideh.style.opacity = "1";
         kamancha.style.opacity = "1";
-        pideh.style.transform = "translate(0, -50%)";
-        kamancha.style.transform = "translate(0, -50%)";
+        pideh.style.transform = "";
+        kamancha.style.transform = "";
         return;
       }
 
@@ -90,7 +106,7 @@ export function BrandBanners() {
     };
 
     const introTimer = window.setTimeout(() => {
-      if (reducedRef.current) {
+      if (reducedRef.current || window.innerWidth <= 900) {
         introRef.current = 1;
         apply();
         return;
@@ -143,9 +159,11 @@ export function BrandBanners() {
                 className={styles.pidehLogo}
                 unoptimized
               />
-              <PillLink href="#about" size="md">
-                {t.brands.more}
-              </PillLink>
+              <ArrowCta
+                href="#about"
+                label={t.brands.more}
+                arrowSrc="/assets/arrow-up-right.svg"
+              />
             </div>
           </div>
           <div className={`${styles.media} ${styles.pidehMedia}`}>
@@ -170,7 +188,15 @@ export function BrandBanners() {
               alt=""
               width={490}
               height={415}
-              className={styles.kamanchaImage}
+              className={`${styles.kamanchaImage} ${styles.kamanchaImageDesktop}`}
+              priority
+            />
+            <Image
+              src="/assets/kamancha-tray.png"
+              alt=""
+              width={281}
+              height={289}
+              className={`${styles.kamanchaImage} ${styles.kamanchaImageMobile}`}
               priority
             />
           </div>
@@ -184,12 +210,23 @@ export function BrandBanners() {
                 className={styles.kamanchaLogo}
                 unoptimized
               />
-              <PillLink href="#about" size="md">
-                {t.brands.more}
-              </PillLink>
+              <ArrowCta
+                href="#about"
+                label={t.brands.more}
+                arrowSrc="/assets/arrow-up-right-kamancha.svg"
+              />
             </div>
           </div>
         </article>
+      </div>
+
+      <div className={styles.brandFilters}>
+        <PillLink href="#projects" size="md">
+          Pideh
+        </PillLink>
+        <PillLink href="#projects" size="md">
+          Kamancha
+        </PillLink>
       </div>
     </section>
   );

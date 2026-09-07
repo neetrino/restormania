@@ -41,9 +41,9 @@ export function Footer() {
   const { t } = useTranslation();
 
   const navLinks = [
-    { href: "#about", label: t.footer.about },
-    { href: "#projects", label: t.footer.news },
-    { href: "#contact", label: t.footer.contactLink },
+    { href: "#about", label: t.nav.about },
+    { href: "#founder", label: t.nav.founder },
+    { href: "#top", label: t.nav.projects },
   ] as const;
 
   return (

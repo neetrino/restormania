@@ -100,12 +100,14 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <PillLink href="#projects" variant="pideh" size="sm">
-            Pideh
-          </PillLink>
-          <PillLink href="#projects" variant="kamancha" size="sm">
-            Kamancha
-          </PillLink>
+          <div className={styles.brandActions}>
+            <PillLink href="#projects" variant="pideh" size="sm">
+              Pideh
+            </PillLink>
+            <PillLink href="#projects" variant="kamancha" size="sm">
+              Kamancha
+            </PillLink>
+          </div>
           <LanguageSwitcher />
         </div>
       </div>

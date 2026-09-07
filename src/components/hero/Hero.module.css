@@ -25,6 +25,17 @@
   will-change: transform, opacity;
 }
 
+.titleDesktop {
+  display: inline;
+}
+
+.titleMobile {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.95;
+}
+
 .subtitle {
   margin-top: 12px;
   font-family: var(--font-headline);
@@ -48,6 +59,29 @@
 
 @media (max-width: 960px) {
   .hero {
-    padding-top: 12px;
+    padding: 8px 20px 28px;
+  }
+
+  .restormania {
+    height: auto;
+    min-height: 0;
+    font-size: clamp(64px, 22vw, 103px);
+    letter-spacing: 0.03em;
+    white-space: normal;
+  }
+
+  .titleDesktop {
+    display: none;
+  }
+
+  .titleMobile {
+    display: flex;
+  }
+
+  .subtitle {
+    margin-top: 8px;
+    font-family: var(--font-ui);
+    font-size: clamp(22px, 8vw, 40px);
+    font-weight: 400;
   }
 }

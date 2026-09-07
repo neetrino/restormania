@@ -36,7 +36,11 @@ export function Hero() {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={prefersReducedMotion ? { duration: 0 } : titleTransition}
       >
-        RESTORMANIA
+        <span className={styles.titleDesktop}>RESTORMANIA</span>
+        <span className={styles.titleMobile}>
+          <span>RESTOR</span>
+          <span>MANIA</span>
+        </span>
       </motion.h1>
       <motion.p
         className={styles.subtitle}
