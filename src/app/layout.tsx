@@ -35,30 +35,103 @@ const braindRepublic = localFont({
   weight: "400",
 });
 
+function isLocalhostUrl(value: string): boolean {
+  try {
+    const { hostname } = new URL(value);
+    return hostname === "localhost" || hostname === "127.0.0.1";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Absolute origin for OG/Twitter images.
+ * Never emit localhost in production builds — crawlers cannot fetch it.
+ * Same pattern as Kamancha.
+ */
+function resolveMetadataBase(): URL {
+  const appUrl =
+    process.env.NEXT_PUBLIC_APP_URL?.trim() || process.env.APP_URL?.trim();
+  if (appUrl && !isLocalhostUrl(appUrl)) {
+    return new URL(appUrl);
+  }
+
+  const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (productionHost) {
+    return new URL(
+      productionHost.startsWith("http")
+        ? productionHost
+        : `https://${productionHost}`,
+    );
+  }
+
+  const vercelUrl = process.env.VERCEL_URL?.trim();
+  if (vercelUrl) {
+    return new URL(
+      vercelUrl.startsWith("http") ? vercelUrl : `https://${vercelUrl}`,
+    );
+  }
+
+  if (appUrl) {
+    return new URL(appUrl);
+  }
+
+  return new URL("http://localhost:3000");
+}
+
+/**
+ * Explicit public PNG (not App Router `/opengraph-image?hash`).
+ * Prefer absolute R2 CDN URL so Telegram/WhatsApp/Facebook fetch the image
+ * without relying on hashed app routes — same as Kamancha / ToonExpo.
+ */
+const SHARE_IMAGE_PATH = "/assets/og-share.png";
+const SHARE_IMAGE_WIDTH = 1200;
+const SHARE_IMAGE_HEIGHT = 630;
+
+function resolveShareImageUrl(): string {
+  const r2Base =
+    process.env.R2_PUBLIC_URL?.replace(/\/$/, "") ||
+    process.env.NEXT_PUBLIC_STATIC_ASSET_BASE_URL?.replace(/\/$/, "");
+  if (r2Base) {
+    return `${r2Base}${SHARE_IMAGE_PATH}`;
+  }
+
+  return SHARE_IMAGE_PATH;
+}
+
+const shareImageUrl = resolveShareImageUrl();
+
+const SITE_DESCRIPTION =
+  "Restormania — բաց պատմություն ռեստորանային բիզնեսի մասին։ Kamancha և Pideh նախագծերի տունը։";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.APP_URL ??
-      process.env.NEXT_PUBLIC_API_URL ??
-      (process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL}`
-        : "http://localhost:3000"),
-  ),
-  title: "Restormania",
-  description:
-    "Restormania — բաց պատմություն ռեստորանային բիզնեսի մասին։ Kamancha և Pideh նախագծերի տունը։",
+  metadataBase: resolveMetadataBase(),
+  title: {
+    default: "Restormania",
+    template: "%s · Restormania",
+  },
+  description: SITE_DESCRIPTION,
   openGraph: {
-    title: "Restormania",
-    description:
-      "Restormania — բաց պատմություն ռեստորանային բիզնեսի մասին։ Kamancha և Pideh նախագծերի տունը։",
     type: "website",
-    locale: "hy_AM",
     siteName: "Restormania",
+    title: "Restormania",
+    description: SITE_DESCRIPTION,
+    locale: "hy_AM",
+    url: "/",
+    images: [
+      {
+        url: shareImageUrl,
+        width: SHARE_IMAGE_WIDTH,
+        height: SHARE_IMAGE_HEIGHT,
+        alt: "Restormania",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Restormania",
-    description:
-      "Restormania — բաց պատմություն ռեստորանային բիզնեսի մասին։ Kamancha և Pideh նախագծերի տունը։",
+    description: SITE_DESCRIPTION,
+    images: [shareImageUrl],
   },
 };
 
