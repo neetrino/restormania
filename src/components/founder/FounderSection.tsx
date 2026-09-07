@@ -23,6 +23,7 @@ export function FounderSection() {
             width={344}
             height={488}
             className={styles.photo}
+            priority
           />
         </figure>
 

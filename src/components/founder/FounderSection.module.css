@@ -1,7 +1,6 @@
 .section {
-  width: min(100%, 1440px);
-  margin: 0 auto;
-  padding: 24px 40px 80px;
+  width: 100%;
+  padding: 40px 24px 96px;
 }
 
 .srOnly {
@@ -17,38 +16,43 @@
 }
 
 .row {
-  display: grid;
-  grid-template-columns: 344px minmax(280px, 562px) 420px;
+  display: flex;
   align-items: stretch;
   justify-content: center;
-  gap: 20px;
+  gap: 19px;
+  width: min(100%, 1320px);
+  margin: 0 auto;
 }
 
 .portrait {
   margin: 0;
-  width: 100%;
-  max-width: 344px;
+  flex: 0 0 344px;
+  width: 344px;
   height: 488px;
   border: 6px solid var(--color-black);
-  border-radius: var(--radius-card);
+  border-radius: 30px;
   overflow: hidden;
   background: var(--color-black);
+  box-sizing: border-box;
 }
 
 .photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: bottom center;
+  object-position: center 30%;
 }
 
 .card {
   display: flex;
   align-items: center;
+  flex: 0 1 562px;
+  width: 562px;
   min-height: 488px;
-  padding: 56px 40px;
-  border-radius: var(--radius-card);
+  padding: 48px 40px;
+  border-radius: 30px;
   background: var(--color-black);
+  box-sizing: border-box;
 }
 
 .bio {
@@ -62,8 +66,8 @@
 
 .stack {
   position: relative;
-  width: 100%;
-  max-width: 420px;
+  flex: 0 0 420px;
+  width: 420px;
   height: 488px;
 }
 
@@ -71,6 +75,8 @@
 .stackBack {
   position: absolute;
   top: 0;
+  width: 344px;
+  max-width: 344px;
 }
 
 .stackFront {
@@ -83,35 +89,47 @@
   z-index: 1;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .row {
-    grid-template-columns: 280px minmax(240px, 1fr) 320px;
-    gap: 16px;
+    gap: 14px;
   }
 
   .portrait,
-  .stack {
-    height: 420px;
+  .stackFront,
+  .stackBack {
+    flex-basis: 280px;
+    width: 280px;
+    height: 400px;
   }
 
   .card {
-    min-height: 420px;
-    padding: 40px 28px;
+    flex: 1 1 420px;
+    width: auto;
+    min-width: 280px;
+    min-height: 400px;
+    padding: 36px 28px;
+  }
+
+  .stack {
+    flex-basis: 340px;
+    width: 340px;
+    height: 400px;
   }
 
   .stackBack {
-    left: 48px;
+    left: 60px;
   }
 }
 
 @media (max-width: 860px) {
   .section {
-    padding: 16px 20px 64px;
+    padding: 24px 20px 64px;
   }
 
   .row {
-    grid-template-columns: 1fr;
-    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 
   .stack {
@@ -119,7 +137,8 @@
   }
 
   .portrait {
-    max-width: 320px;
+    flex-basis: auto;
+    width: min(100%, 320px);
     height: 440px;
   }
 
