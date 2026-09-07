@@ -168,7 +168,68 @@
   }
 }
 
-@media (max-width: 900px) {
+/*
+ * Inside the 1440px scaled canvas, vw would use the real iPad width and
+ * stretch the layout. Lock to the desktop-at-1440 pixel values instead.
+ */
+@media (min-width: 744px) and (max-width: 1439px) {
+  .section {
+    --stage-height: 415px;
+    --panel-height: 302px;
+  }
+
+  .stage {
+    width: 1440px;
+    left: 50%;
+    margin-left: -720px;
+  }
+
+  .banner {
+    width: 720px;
+  }
+
+  .pideh {
+    left: -58px;
+  }
+
+  .kamancha {
+    right: -58px;
+  }
+
+  .pideh .panel,
+  .kamancha .panel {
+    padding-left: 115px;
+    padding-right: 22%;
+  }
+
+  .kamancha .panel {
+    padding-right: 115px;
+    padding-left: 22%;
+  }
+
+  .copy {
+    gap: 22px;
+  }
+
+  .pidehLogo {
+    width: 158px;
+  }
+
+  .kamanchaLogo {
+    width: 216px;
+  }
+
+  .pidehImage {
+    width: 460px;
+  }
+
+  .kamanchaImage {
+    width: 490px;
+  }
+}
+
+/* Phones only */
+@media (max-width: 743px) {
   .section {
     --panel-height: 199px;
     padding: 8px 12px 32px;
@@ -209,7 +270,6 @@
   }
 
   .kamancha {
-    /* Clip right/bottom to the card; allow logo to sit slightly above like Figma */
     clip-path: inset(-28px 0 0 0 round 60px);
     border-radius: 60px;
   }
@@ -366,7 +426,7 @@
   }
 }
 
-@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 743px) and (prefers-reduced-motion: reduce) {
   .pideh,
   .kamancha {
     transform: none !important;

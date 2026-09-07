@@ -15,6 +15,35 @@
   --radius-card: 30px;
   --layout-max: 1280px;
   --header-height: 68px;
+  --page-canvas-design-width: 1440;
+  --page-canvas-scale: 1;
+}
+
+/* iPad / tablet: identical desktop chrome, uniformly smaller */
+@media (min-width: 744px) and (max-width: 1439px) {
+  :root {
+    --page-canvas-scale: calc(100vw / 1440);
+  }
+
+  .page-canvas-scale-wrap {
+    width: 1440px;
+    transform: scale(var(--page-canvas-scale));
+    transform-origin: top left;
+  }
+
+  .page-root {
+    padding-top: calc((var(--header-height) + 24px) * var(--page-canvas-scale));
+  }
+}
+
+html.page-canvas-active .page-canvas-scale-wrap {
+  width: 1440px;
+  transform: scale(var(--page-canvas-scale));
+  transform-origin: top left;
+}
+
+html.page-canvas-active .page-root {
+  padding-top: calc((var(--header-height) + 24px) * var(--page-canvas-scale));
 }
 
 html {

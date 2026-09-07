@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { PillLink } from "@/components/ui/PillLink";
 import { useTranslation } from "@/i18n/LocaleProvider";
+import { PAGE_CANVAS_MIN_WIDTH } from "@/lib/page-canvas";
 import styles from "./BrandBanners.module.css";
 
 const INTRO_DELAY_MS = 420;
@@ -12,6 +13,10 @@ const SCROLL_RANGE_PX = 560;
 const LERP = 0.1;
 
 const easeOutCubic = (t: number): number => 1 - (1 - t) ** 3;
+
+function isMobileCanvasWidth(width: number): boolean {
+  return width < PAGE_CANVAS_MIN_WIDTH;
+}
 
 function ArrowCta({
   href,
@@ -51,7 +56,7 @@ export function BrandBanners() {
         return;
       }
 
-      if (reducedRef.current || window.innerWidth <= 900) {
+      if (reducedRef.current || isMobileCanvasWidth(window.innerWidth)) {
         pideh.style.opacity = "1";
         kamancha.style.opacity = "1";
         pideh.style.transform = "";
@@ -106,7 +111,7 @@ export function BrandBanners() {
     };
 
     const introTimer = window.setTimeout(() => {
-      if (reducedRef.current || window.innerWidth <= 900) {
+      if (reducedRef.current || isMobileCanvasWidth(window.innerWidth)) {
         introRef.current = 1;
         apply();
         return;
@@ -115,7 +120,7 @@ export function BrandBanners() {
     }, INTRO_DELAY_MS);
 
     const onScroll = () => {
-      if (reducedRef.current || window.innerWidth <= 900) {
+      if (reducedRef.current || isMobileCanvasWidth(window.innerWidth)) {
         retreatTargetRef.current = 0;
         retreatCurrentRef.current = 0;
         apply();

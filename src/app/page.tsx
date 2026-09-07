@@ -4,19 +4,26 @@ import { Footer } from "@/components/footer/Footer";
 import { FounderSection } from "@/components/founder/FounderSection";
 import { Header } from "@/components/header/Header";
 import { Hero } from "@/components/hero/Hero";
+import {
+  CanvasScaler,
+  PageCanvasScaleRuntime,
+} from "@/components/layout/CanvasScaler";
 import styles from "./page.module.css";
 
 export default function HomePage() {
   return (
-    <div className={styles.page}>
+    <div className={`page-root ${styles.page}`}>
+      <PageCanvasScaleRuntime />
       <Header />
-      <main>
-        <Hero />
-        <BrandBanners />
-        <AboutSection />
-        <FounderSection />
-      </main>
-      <Footer />
+      <CanvasScaler>
+        <main>
+          <Hero />
+          <BrandBanners />
+          <AboutSection />
+          <FounderSection />
+        </main>
+        <Footer />
+      </CanvasScaler>
     </div>
   );
 }

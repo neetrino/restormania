@@ -4,8 +4,13 @@
   left: 0;
   z-index: 100;
   width: 100%;
-  padding: 12px 24px 0;
+  padding: 12px 0 0;
   background: transparent;
+  overflow: visible;
+}
+
+.canvasScaleWrap {
+  width: 100%;
 }
 
 .shell {
@@ -64,6 +69,7 @@
 .actions {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   gap: 12px;
 }
 
@@ -73,7 +79,32 @@
   gap: 12px;
 }
 
-@media (max-width: 960px) {
+/* iPad / tablet: always the full desktop navbar */
+@media (min-width: 744px) {
+  .header {
+    padding: 12px 0 0;
+  }
+
+  .nav,
+  .brandActions {
+    display: flex;
+  }
+
+  .shell {
+    width: min(100%, var(--layout-max));
+    height: var(--header-height);
+    min-height: var(--header-height);
+    padding: 0 28px;
+  }
+
+  .logo {
+    width: 86px;
+    height: 56px;
+  }
+}
+
+/* Phones only */
+@media (max-width: 743px) {
   .header {
     padding: 12px 16px 0;
   }

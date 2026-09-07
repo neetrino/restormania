@@ -19,15 +19,15 @@
   display: flex;
   align-items: stretch;
   justify-content: center;
-  gap: 19px;
-  width: min(100%, 1320px);
+  gap: 16px;
+  width: min(100%, 1280px);
   margin: 0 auto;
 }
 
 .portrait {
   margin: 0;
-  flex: 0 0 344px;
-  width: 344px;
+  flex: 0 0 320px;
+  width: 320px;
   height: 488px;
   border: 6px solid var(--color-black);
   border-radius: 30px;
@@ -46,8 +46,8 @@
 .card {
   display: flex;
   align-items: center;
-  flex: 0 1 562px;
-  width: 562px;
+  flex: 0 1 520px;
+  width: 520px;
   min-height: 488px;
   padding: 48px 40px;
   border-radius: 30px;
@@ -66,8 +66,8 @@
 
 .stack {
   position: relative;
-  flex: 0 0 420px;
-  width: 420px;
+  flex: 0 0 400px;
+  width: 400px;
   height: 488px;
 }
 
@@ -75,8 +75,8 @@
 .stackBack {
   position: absolute;
   top: 0;
-  width: 344px;
-  max-width: 344px;
+  width: 320px;
+  max-width: 320px;
 }
 
 .stackFront {
@@ -85,43 +85,11 @@
 }
 
 .stackBack {
-  left: 76px;
+  left: 70px;
   z-index: 1;
 }
 
-@media (max-width: 1200px) {
-  .row {
-    gap: 14px;
-  }
-
-  .portrait,
-  .stackFront,
-  .stackBack {
-    flex-basis: 280px;
-    width: 280px;
-    height: 400px;
-  }
-
-  .card {
-    flex: 1 1 420px;
-    width: auto;
-    min-width: 280px;
-    min-height: 400px;
-    padding: 36px 28px;
-  }
-
-  .stack {
-    flex-basis: 340px;
-    width: 340px;
-    height: 400px;
-  }
-
-  .stackBack {
-    left: 60px;
-  }
-}
-
-@media (max-width: 860px) {
+@media (max-width: 743px) {
   .section {
     padding: 24px 20px 64px;
   }

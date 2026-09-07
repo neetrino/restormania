@@ -68,47 +68,49 @@ export function Header() {
           : { duration: 0.7, ease: easeOutExpo, delay: 0.05 }
       }
     >
-      <div
-        className={`${styles.shell} ${scrolled ? styles.shellScrolled : ""}`}
-      >
-        <a
-          className={styles.logo}
-          href="#top"
-          aria-label="Restormania"
-          onClick={scrollToPageTop}
+      <div className={`page-canvas-scale-wrap ${styles.canvasScaleWrap}`}>
+        <div
+          className={`${styles.shell} ${scrolled ? styles.shellScrolled : ""}`}
         >
-          <Image
-            src="/assets/header-logo-pill.png"
-            alt=""
-            width={86}
-            height={56}
-            priority
-          />
-        </a>
+          <a
+            className={styles.logo}
+            href="#top"
+            aria-label="Restormania"
+            onClick={scrollToPageTop}
+          >
+            <Image
+              src="/assets/header-logo-pill.png"
+              alt=""
+              width={86}
+              height={56}
+              priority
+            />
+          </a>
 
-        <nav className={styles.nav} aria-label={t.nav.main}>
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              className={styles.navLink}
-              href={link.href}
-              onClick={link.href === "#top" ? scrollToPageTop : undefined}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+          <nav className={styles.nav} aria-label={t.nav.main}>
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                className={styles.navLink}
+                href={link.href}
+                onClick={link.href === "#top" ? scrollToPageTop : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
-        <div className={styles.actions}>
-          <div className={styles.brandActions}>
-            <PillLink href="#projects" variant="pideh" size="sm">
-              Pideh
-            </PillLink>
-            <PillLink href="#projects" variant="kamancha" size="sm">
-              Kamancha
-            </PillLink>
+          <div className={styles.actions}>
+            <div className={styles.brandActions}>
+              <PillLink href="#projects" variant="pideh" size="sm">
+                Pideh
+              </PillLink>
+              <PillLink href="#projects" variant="kamancha" size="sm">
+                Kamancha
+              </PillLink>
+            </div>
+            <LanguageSwitcher />
           </div>
-          <LanguageSwitcher />
         </div>
       </div>
     </motion.header>
