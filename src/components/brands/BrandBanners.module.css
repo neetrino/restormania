@@ -1,51 +1,58 @@
 .section {
-  --banner-height: clamp(240px, 28vw, 360px);
-  --panel-height: clamp(180px, 21vw, 306px);
+  --stage-height: clamp(300px, 29vw, 415px);
+  --panel-height: clamp(220px, 21vw, 307px);
   width: 100%;
-  padding: 28px 0 48px;
+  padding: 8px 0 40px;
   overflow: hidden;
 }
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: clamp(16px, 3vw, 48px);
-  width: min(100%, 1480px);
-  margin: 0 auto;
-  padding: 0 clamp(8px, 2vw, 24px);
+.stage {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
+  height: var(--stage-height);
 }
 
 .banner {
-  position: relative;
-  height: var(--banner-height);
+  position: absolute;
+  top: 50%;
+  width: min(52vw, 720px);
+  height: var(--panel-height);
+  opacity: 0;
+  transform: translate(0, -50%);
+  will-change: transform, opacity;
+}
+
+.pideh {
+  left: -4vw;
+  transform: translate(-72%, -50%);
+}
+
+.kamancha {
+  right: -4vw;
+  transform: translate(72%, -50%);
 }
 
 .panel {
   position: absolute;
-  top: 50%;
+  inset: 0;
   z-index: 1;
   display: flex;
   align-items: center;
-  height: var(--panel-height);
-  transform: translateY(-50%);
   overflow: hidden;
 }
 
 .pideh .panel {
-  left: 0;
-  right: 22%;
   justify-content: center;
-  padding-right: 12%;
+  padding-right: 18%;
   background: var(--color-pideh);
   border-radius: 24px 190px 190px 24px;
 }
 
 .kamancha .panel {
-  left: 22%;
-  right: 0;
   justify-content: center;
-  padding-left: 12%;
+  padding-left: 18%;
   background: var(--color-kamancha);
   border-radius: 190px 24px 24px 190px;
 }
@@ -54,7 +61,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(12px, 1.5vw, 24px);
+  gap: clamp(12px, 1.5vw, 22px);
 }
 
 .pidehLogo {
@@ -74,63 +81,93 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 46%;
+  height: 120%;
   pointer-events: none;
   transform: translateY(-50%);
 }
 
 .pidehMedia {
-  right: 0;
-  width: 48%;
-  height: 100%;
+  right: -6%;
 }
 
 .kamanchaMedia {
-  left: 0;
-  width: 48%;
-  height: 100%;
+  left: -6%;
 }
 
 .pidehImage {
-  width: clamp(220px, 30vw, 420px);
+  width: clamp(240px, 28vw, 400px);
   height: auto;
   max-width: none;
   transform: rotate(-90deg) scaleX(-1);
   object-fit: cover;
+  animation: mediaBob 4.2s ease-in-out 1.8s infinite;
 }
 
 .kamanchaImage {
-  width: clamp(170px, 22vw, 300px);
+  width: clamp(180px, 22vw, 300px);
   height: auto;
   max-width: none;
   transform: rotate(-68.89deg);
   object-fit: cover;
+  animation: mediaBob 4.8s ease-in-out 2s infinite;
+}
+
+@keyframes mediaBob {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -8px;
+  }
 }
 
 @media (max-width: 900px) {
   .section {
-    --banner-height: auto;
+    --stage-height: auto;
     --panel-height: 220px;
     padding: 16px 20px 40px;
+    overflow: visible;
   }
 
-  .row {
-    grid-template-columns: 1fr;
+  .stage {
+    width: 100%;
+    left: auto;
+    margin-left: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
     gap: 48px;
   }
 
-  .banner {
-    height: auto;
-    min-height: 280px;
-  }
-
-  .panel {
+  .banner,
+  .pideh,
+  .kamancha {
     position: relative;
     top: auto;
     left: auto;
     right: auto;
+    width: 100%;
+    height: auto;
+    min-height: 260px;
+    opacity: 1 !important;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+    will-change: auto;
+  }
+
+  .kamancha {
+    flex-direction: column-reverse;
+  }
+
+  .panel {
+    position: relative;
     width: min(100%, 420px);
+    height: var(--panel-height);
     margin: 0 auto;
-    transform: none;
     padding: 24px;
   }
 
@@ -154,19 +191,10 @@
     transform: none;
   }
 
-  .pideh {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .kamancha {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
   .pidehImage,
   .kamanchaImage {
     width: min(72vw, 300px);
+    animation: none;
   }
 
   .pidehImage {
@@ -175,5 +203,25 @@
 
   .kamanchaImage {
     transform: rotate(-40deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pideh,
+  .kamancha {
+    opacity: 1 !important;
+    transform: translate(0, -50%) !important;
+  }
+
+  .pidehImage,
+  .kamanchaImage {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .pideh,
+  .kamancha {
+    transform: none !important;
   }
 }
