@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState, type MouseEvent } from "react";
 import { PillLink } from "@/components/ui/PillLink";
 import { easeOutExpo } from "@/components/motion/presets";
+import { KAMANCHA_URL, PIDEH_URL } from "@/lib/brand-links";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import styles from "./Header.module.css";
@@ -102,10 +103,10 @@ export function Header() {
 
           <div className={styles.actions}>
             <div className={styles.brandActions}>
-              <PillLink href="#projects" variant="pideh" size="sm">
+              <PillLink href={PIDEH_URL} variant="pideh" size="sm">
                 Pideh
               </PillLink>
-              <PillLink href="#projects" variant="kamancha" size="sm">
+              <PillLink href={KAMANCHA_URL} variant="kamancha" size="sm">
                 Kamancha
               </PillLink>
             </div>

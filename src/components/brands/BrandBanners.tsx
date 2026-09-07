@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { PillLink } from "@/components/ui/PillLink";
 import { useTranslation } from "@/i18n/LocaleProvider";
+import { KAMANCHA_URL, PIDEH_URL } from "@/lib/brand-links";
 import { PAGE_CANVAS_MIN_WIDTH } from "@/lib/page-canvas";
 import styles from "./BrandBanners.module.css";
 
@@ -27,8 +28,17 @@ function ArrowCta({
   label: string;
   arrowSrc: string;
 }) {
+  const external = /^https?:\/\//i.test(href);
+
   return (
-    <a className={styles.arrowCta} href={href} aria-label={label}>
+    <a
+      className={styles.arrowCta}
+      href={href}
+      aria-label={label}
+      {...(external
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
+    >
       <Image src={arrowSrc} alt="" width={35} height={35} unoptimized />
     </a>
   );
@@ -164,11 +174,11 @@ export function BrandBanners() {
                 className={styles.pidehLogo}
                 unoptimized
               />
-              <PillLink href="#about" size="md" className={styles.moreDesktop}>
+              <PillLink href={PIDEH_URL} size="md" className={styles.moreDesktop}>
                 {t.brands.more}
               </PillLink>
               <ArrowCta
-                href="#about"
+                href={PIDEH_URL}
                 label={t.brands.more}
                 arrowSrc="/assets/arrow-up-right.svg"
               />
@@ -226,7 +236,11 @@ export function BrandBanners() {
                 className={`${styles.kamanchaLogo} ${styles.kamanchaLogoInFlow}`}
                 unoptimized
               />
-              <PillLink href="#about" size="md" className={styles.moreDesktop}>
+              <PillLink
+                href={KAMANCHA_URL}
+                size="md"
+                className={styles.moreDesktop}
+              >
                 {t.brands.more}
               </PillLink>
             </div>
@@ -241,7 +255,7 @@ export function BrandBanners() {
             aria-hidden
           />
           <ArrowCta
-            href="#about"
+            href={KAMANCHA_URL}
             label={t.brands.more}
             arrowSrc="/assets/arrow-up-right-kamancha.svg"
           />
@@ -249,10 +263,10 @@ export function BrandBanners() {
       </div>
 
       <div className={styles.brandFilters}>
-        <PillLink href="#projects" size="md">
+        <PillLink href={PIDEH_URL} size="md">
           Pideh
         </PillLink>
-        <PillLink href="#projects" size="md">
+        <PillLink href={KAMANCHA_URL} size="md">
           Kamancha
         </PillLink>
       </div>

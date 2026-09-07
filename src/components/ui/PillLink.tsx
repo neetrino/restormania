@@ -9,6 +9,10 @@ type PillLinkProps = {
   className?: string;
 };
 
+function isExternalHref(href: string): boolean {
+  return /^https?:\/\//i.test(href);
+}
+
 export function PillLink({
   href,
   children,
@@ -25,8 +29,16 @@ export function PillLink({
     .filter(Boolean)
     .join(" ");
 
+  const external = isExternalHref(href);
+
   return (
-    <a className={classNames} href={href}>
+    <a
+      className={classNames}
+      href={href}
+      {...(external
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
+    >
       {children}
     </a>
   );
