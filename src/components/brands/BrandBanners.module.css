@@ -90,15 +90,15 @@
 }
 
 .pidehMedia {
-  right: -6%;
+  right: -2%;
 }
 
 .kamanchaMedia {
-  left: -6%;
+  left: -2%;
 }
 
 .pidehImage {
-  width: clamp(240px, 28vw, 400px);
+  width: clamp(280px, 30vw, 440px);
   height: auto;
   max-width: none;
   transform: rotate(-90deg) scaleX(-1);
@@ -107,11 +107,12 @@
 }
 
 .kamanchaImage {
-  width: clamp(180px, 22vw, 300px);
+  width: clamp(300px, 34vw, 490px);
   height: auto;
+  max-height: 415px;
   max-width: none;
   transform: rotate(-68.89deg);
-  object-fit: cover;
+  object-fit: contain;
   animation: mediaBob 4.8s ease-in-out 2s infinite;
 }
 
@@ -195,7 +196,8 @@
 
   .pidehImage,
   .kamanchaImage {
-    width: min(72vw, 300px);
+    width: min(72vw, 360px);
+    max-height: none;
     animation: none;
   }
 
