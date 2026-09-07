@@ -81,8 +81,4 @@
   .text {
     max-width: 100%;
   }
-
-  .text + .text {
-    display: none;
-  }
 }

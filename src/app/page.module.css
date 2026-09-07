@@ -2,4 +2,12 @@
   min-height: 100vh;
   background: var(--color-yellow);
   color: var(--color-black);
+  overflow-x: clip;
+  padding-top: calc(var(--header-height) + 24px);
+}
+
+@media (max-width: 960px) {
+  .page {
+    padding-top: 100px;
+  }
 }

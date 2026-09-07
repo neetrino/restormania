@@ -194,8 +194,8 @@ export function BrandBanners() {
             <Image
               src="/assets/kamancha-tray.png"
               alt=""
-              width={281}
-              height={289}
+              width={819}
+              height={1024}
               className={`${styles.kamanchaImage} ${styles.kamanchaImageMobile}`}
               priority
             />
