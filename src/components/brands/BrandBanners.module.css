@@ -205,6 +205,11 @@
     clip-path: inset(-80px -8% 0 0 round 60px);
   }
 
+  .kamancha {
+    /* Figma: tray sits on the green card; top/right may overflow, bottom is clipped */
+    clip-path: inset(-100px -12% 0 0 round 60px);
+  }
+
   .panel {
     position: absolute;
     inset: 0;
@@ -290,9 +295,12 @@
     top: -90px;
     left: 34%;
     right: auto;
-    width: min(66%, 281px);
-    height: auto;
-    aspect-ratio: 281 / 289;
+    width: min(66vw, 281px);
+    height: min(68vw, 289px);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transform: none;
   }
 
@@ -322,6 +330,7 @@
     height: 100%;
     max-width: none;
     object-fit: contain;
+    /* Figma: -scale-y-100 + rotate-180 ≡ scaleX(-1) */
     transform: scaleX(-1);
     border-radius: 35px;
   }

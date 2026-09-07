@@ -46,6 +46,8 @@
   border: 1px solid rgba(1, 0, 0, 0.12);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(1, 0, 0, 0.12);
+  transform-origin: top right;
+  will-change: transform, opacity;
 }
 
 .option {

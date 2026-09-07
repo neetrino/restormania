@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useId, useRef, useState } from "react";
 import { LOCALES, type Locale } from "@/i18n/locales";
 import { useTranslation } from "@/i18n/LocaleProvider";
@@ -9,6 +10,11 @@ const LOCALE_LABELS: Record<Locale, string> = {
   hy: "HY",
   en: "EN",
   ru: "RU",
+};
+
+const menuTransition = {
+  duration: 0.22,
+  ease: [0.16, 1, 0.3, 1] as const,
 };
 
 function GlobeIcon() {
@@ -77,31 +83,37 @@ export function LanguageSwitcher() {
         <GlobeIcon />
       </button>
 
-      {open ? (
-        <ul
-          className={styles.menu}
-          id={listId}
-          role="listbox"
-          aria-label={t.language}
-        >
-          {LOCALES.map((code) => (
-            <li key={code} role="option" aria-selected={code === locale}>
-              <button
-                type="button"
-                className={`${styles.option} ${
-                  code === locale ? styles.optionActive : ""
-                }`}
-                onClick={() => {
-                  setLocale(code);
-                  setOpen(false);
-                }}
-              >
-                {LOCALE_LABELS[code]}
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      <AnimatePresence>
+        {open ? (
+          <motion.ul
+            className={styles.menu}
+            id={listId}
+            role="listbox"
+            aria-label={t.language}
+            initial={{ opacity: 0, y: -8, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.98 }}
+            transition={menuTransition}
+          >
+            {LOCALES.map((code) => (
+              <li key={code} role="option" aria-selected={code === locale}>
+                <button
+                  type="button"
+                  className={`${styles.option} ${
+                    code === locale ? styles.optionActive : ""
+                  }`}
+                  onClick={() => {
+                    setLocale(code);
+                    setOpen(false);
+                  }}
+                >
+                  {LOCALE_LABELS[code]}
+                </button>
+              </li>
+            ))}
+          </motion.ul>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }
