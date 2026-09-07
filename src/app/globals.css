@@ -3,6 +3,8 @@
   --color-black: #010000;
   --color-ink: #171717;
   --color-white: #ffffff;
+  --color-pideh: #ff8112;
+  --color-kamancha: #265127;
   --color-border-muted: rgba(0, 0, 0, 0.4);
   --color-footer-muted: rgba(255, 255, 255, 0.4);
   --font-body: var(--font-noto-armenian), "Noto Sans Armenian", system-ui, sans-serif;

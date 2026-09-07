@@ -34,10 +34,10 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <PillLink href="#projects" variant="outline">
+          <PillLink href="#projects" variant="pideh" size="sm">
             Pideh
           </PillLink>
-          <PillLink href="#projects" variant="solid">
+          <PillLink href="#projects" variant="kamancha" size="sm">
             Kamancha
           </PillLink>
           <LanguageSwitcher />

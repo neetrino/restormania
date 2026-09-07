@@ -4,7 +4,7 @@ import styles from "./PillLink.module.css";
 type PillLinkProps = {
   href: string;
   children: ReactNode;
-  variant?: "solid" | "outline";
+  variant?: "solid" | "outline" | "pideh" | "kamancha";
   size?: "sm" | "md";
   className?: string;
 };

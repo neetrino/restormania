@@ -37,7 +37,7 @@
   right: 22%;
   justify-content: center;
   padding-right: 12%;
-  background: #ff8112;
+  background: var(--color-pideh);
   border-radius: 24px 190px 190px 24px;
 }
 
@@ -46,7 +46,7 @@
   right: 0;
   justify-content: center;
   padding-left: 12%;
-  background: #265127;
+  background: var(--color-kamancha);
   border-radius: 190px 24px 24px 190px;
 }
 

@@ -19,6 +19,8 @@
 }
 
 .sm {
+  min-width: 108px;
+  height: 40px;
   padding: 8px 20px;
   font-size: 14px;
 }
@@ -38,5 +40,14 @@
 .outline {
   border: 1px solid var(--color-border-muted);
   color: var(--color-black);
-  padding: 9px 21px;
+}
+
+.pideh {
+  background: var(--color-pideh);
+  color: var(--color-white);
+}
+
+.kamancha {
+  background: var(--color-kamancha);
+  color: var(--color-white);
 }
