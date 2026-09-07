@@ -205,13 +205,13 @@
   }
 
   .pideh {
-    /* Figma: food sits on the orange card; top/right may overflow, bottom is clipped to the card */
     clip-path: inset(-80px -8% 0 0 round 60px);
   }
 
   .kamancha {
-    /* Figma: tray sits on the green card; top/right may overflow, bottom is clipped */
-    clip-path: inset(-100px -12% 0 0 round 60px);
+    /* Clip right/bottom to the card; allow logo to sit slightly above like Figma */
+    clip-path: inset(-28px 0 0 0 round 60px);
+    border-radius: 60px;
   }
 
   .panel {
@@ -247,9 +247,9 @@
 
   .kamanchaLogo {
     position: absolute;
-    top: -20px;
-    left: 29px;
-    width: 212px;
+    top: -18px;
+    left: 28px;
+    width: 200px;
   }
 
   .moreDesktop {
@@ -300,15 +300,16 @@
   }
 
   .kamanchaMedia {
-    top: -90px;
-    left: 34%;
-    right: auto;
-    width: min(66vw, 281px);
-    height: min(68vw, 289px);
+    top: 8px;
+    left: 30%;
+    right: -32%;
+    bottom: -28px;
+    width: auto;
+    height: auto;
     z-index: 3;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     transform: none;
   }
 
@@ -334,13 +335,12 @@
 
   .kamanchaImageMobile {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: min(92vw, 400px);
+    height: auto;
     max-width: none;
     object-fit: contain;
-    /* Figma: -scale-y-100 + rotate-180 ≡ scaleX(-1) */
-    transform: scaleX(-1);
-    border-radius: 35px;
+    object-position: right center;
+    transform: scaleX(-1) rotate(-6deg);
   }
 
   .brandFilters {
