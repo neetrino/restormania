@@ -22,8 +22,7 @@
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
-  opacity: 0;
-  animation: heroTitleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
+  will-change: transform, opacity;
 }
 
 .subtitle {
@@ -33,32 +32,7 @@
   font-weight: 500;
   line-height: 1.3;
   color: var(--color-black);
-  opacity: 0;
-  animation: heroSubtitleIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-}
-
-@keyframes heroTitleIn {
-  from {
-    opacity: 0;
-    transform: translateY(36px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes heroSubtitleIn {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  will-change: transform, opacity, filter;
 }
 
 @media (max-width: 1280px) {
@@ -75,13 +49,5 @@
 @media (max-width: 960px) {
   .hero {
     padding-top: 12px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .restormania,
-  .subtitle {
-    opacity: 1;
-    animation: none;
   }
 }
