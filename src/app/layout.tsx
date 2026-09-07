@@ -36,9 +36,30 @@ const braindRepublic = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.APP_URL ??
+      process.env.NEXT_PUBLIC_API_URL ??
+      (process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "http://localhost:3000"),
+  ),
   title: "Restormania",
   description:
     "Restormania — բաց պատմություն ռեստորանային բիզնեսի մասին։ Kamancha և Pideh նախագծերի տունը։",
+  openGraph: {
+    title: "Restormania",
+    description:
+      "Restormania — բաց պատմություն ռեստորանային բիզնեսի մասին։ Kamancha և Pideh նախագծերի տունը։",
+    type: "website",
+    locale: "hy_AM",
+    siteName: "Restormania",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Restormania",
+    description:
+      "Restormania — բաց պատմություն ռեստորանային բիզնեսի մասին։ Kamancha և Pideh նախագծերի տունը։",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
