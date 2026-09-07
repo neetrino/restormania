@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { PillLink } from "@/components/ui/PillLink";
 import styles from "./AboutSection.module.css";
 
 const ABOUT_PARAGRAPH_HY =
@@ -28,9 +27,6 @@ export function AboutSection() {
         <div className={styles.copy}>
           <p className={styles.text}>{ABOUT_PARAGRAPH_HY}</p>
           <p className={styles.text}>{ABOUT_PARAGRAPH_EN}</p>
-          <PillLink href="#founder" size="md" className={styles.cta}>
-            Ավելին
-          </PillLink>
         </div>
       </div>
     </section>

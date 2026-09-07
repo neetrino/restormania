@@ -51,11 +51,6 @@
   max-width: 621px;
 }
 
-.cta {
-  align-self: flex-start;
-  margin-top: 8px;
-}
-
 @media (max-width: 960px) {
   .section {
     padding: 32px 20px 56px;
@@ -72,9 +67,5 @@
 
   .copy {
     padding-top: 0;
-  }
-
-  .cta {
-    align-self: center;
   }
 }
