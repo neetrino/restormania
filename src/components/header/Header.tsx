@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState, type MouseEvent } from "react";
 import { PillLink } from "@/components/ui/PillLink";
+import { easeOutExpo } from "@/components/motion/presets";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import styles from "./Header.module.css";
@@ -17,6 +19,7 @@ function scrollToPageTop(event: MouseEvent<HTMLAnchorElement>) {
 
 export function Header() {
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
@@ -55,7 +58,16 @@ export function Header() {
   }, []);
 
   return (
-    <header className={styles.header}>
+    <motion.header
+      className={styles.header}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0 }
+          : { duration: 0.7, ease: easeOutExpo, delay: 0.05 }
+      }
+    >
       <div
         className={`${styles.shell} ${scrolled ? styles.shellScrolled : ""}`}
       >
@@ -97,6 +109,6 @@ export function Header() {
           <LanguageSwitcher />
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

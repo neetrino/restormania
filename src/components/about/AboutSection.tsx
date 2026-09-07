@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { Reveal, RevealGroup } from "@/components/motion/Reveal";
+import { fadeScale, fadeUp } from "@/components/motion/presets";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import styles from "./AboutSection.module.css";
 
@@ -12,8 +14,8 @@ export function AboutSection() {
       <h2 className={styles.srOnly} id="about-title">
         {t.about.title}
       </h2>
-      <div className={styles.grid}>
-        <div className={styles.visual}>
+      <RevealGroup className={styles.grid}>
+        <Reveal className={styles.visual} variants={fadeScale} child>
           <Image
             src="/assets/about-logo.png"
             alt="Restormania"
@@ -22,15 +24,15 @@ export function AboutSection() {
             className={styles.logo}
             priority
           />
-        </div>
-        <div className={styles.copy}>
+        </Reveal>
+        <Reveal className={styles.copy} variants={fadeUp} child>
           {t.about.paragraphs.map((paragraph) => (
             <p key={paragraph} className={styles.text}>
               {paragraph}
             </p>
           ))}
-        </div>
-      </div>
+        </Reveal>
+      </RevealGroup>
     </section>
   );
 }

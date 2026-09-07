@@ -1,6 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { Reveal, RevealGroup } from "@/components/motion/Reveal";
+import {
+  fadeUp,
+  slideFromLeft,
+  slideFromRight,
+} from "@/components/motion/presets";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import styles from "./FounderSection.module.css";
 
@@ -16,8 +22,8 @@ export function FounderSection() {
       <h2 className={styles.srOnly} id="founder-title">
         {t.founder.title}
       </h2>
-      <div className={styles.row}>
-        <figure className={styles.portrait}>
+      <RevealGroup className={styles.row}>
+        <Reveal as="figure" className={styles.portrait} variants={slideFromLeft} child>
           <Image
             src="/assets/founder.png"
             alt={t.founder.photoAlt}
@@ -26,13 +32,13 @@ export function FounderSection() {
             className={styles.photo}
             priority
           />
-        </figure>
+        </Reveal>
 
-        <article className={styles.card}>
+        <Reveal as="article" className={styles.card} variants={fadeUp} child>
           <p className={styles.bio}>{t.founder.bio}</p>
-        </article>
+        </Reveal>
 
-        <div className={styles.stack} aria-hidden="true">
+        <Reveal className={styles.stack} variants={slideFromRight} child aria-hidden="true">
           <figure className={`${styles.portrait} ${styles.stackFront}`}>
             <Image
               src="/assets/founder.png"
@@ -51,8 +57,8 @@ export function FounderSection() {
               className={styles.photo}
             />
           </figure>
-        </div>
-      </div>
+        </Reveal>
+      </RevealGroup>
     </section>
   );
 }

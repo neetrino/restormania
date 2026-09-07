@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { Reveal, RevealGroup } from "@/components/motion/Reveal";
+import { fadeIn, fadeUp } from "@/components/motion/presets";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import styles from "./Footer.module.css";
 
@@ -46,8 +48,8 @@ export function Footer() {
 
   return (
     <footer className={styles.footer} id="contact">
-      <div className={styles.inner}>
-        <div className={styles.top}>
+      <RevealGroup className={styles.inner} as="div">
+        <Reveal className={styles.top} variants={fadeUp} child>
           <h2 className={styles.headline}>{t.footer.headline}</h2>
 
           <div className={styles.columns}>
@@ -76,9 +78,9 @@ export function Footer() {
               </address>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className={styles.social}>
+        <Reveal className={styles.social} variants={fadeIn} child>
           {SOCIAL_LINKS.map((item) => {
             const isExternal = item.href.startsWith("http");
             return (
@@ -101,9 +103,9 @@ export function Footer() {
               </a>
             );
           })}
-        </div>
+        </Reveal>
 
-        <p className={styles.copyright}>
+        <Reveal as="p" className={styles.copyright} variants={fadeUp} child>
           {t.footer.copyright}{" "}
           <a
             className={styles.credit}
@@ -113,8 +115,8 @@ export function Footer() {
           >
             Neetrino IT Company
           </a>
-        </p>
-      </div>
+        </Reveal>
+      </RevealGroup>
     </footer>
   );
 }
