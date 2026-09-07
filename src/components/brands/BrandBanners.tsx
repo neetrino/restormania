@@ -159,6 +159,9 @@ export function BrandBanners() {
                 className={styles.pidehLogo}
                 unoptimized
               />
+              <PillLink href="#about" size="md" className={styles.moreDesktop}>
+                {t.brands.more}
+              </PillLink>
               <ArrowCta
                 href="#about"
                 label={t.brands.more}
@@ -218,6 +221,9 @@ export function BrandBanners() {
                 className={styles.kamanchaLogo}
                 unoptimized
               />
+              <PillLink href="#about" size="md" className={styles.moreDesktop}>
+                {t.brands.more}
+              </PillLink>
               <ArrowCta
                 href="#about"
                 label={t.brands.more}

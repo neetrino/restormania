@@ -80,6 +80,10 @@
   height: auto;
 }
 
+.moreDesktop {
+  display: inline-flex;
+}
+
 .media {
   position: absolute;
   top: 50%;
@@ -246,6 +250,10 @@
     top: -20px;
     left: 29px;
     width: 212px;
+  }
+
+  .moreDesktop {
+    display: none;
   }
 
   .arrowCta {
