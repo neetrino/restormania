@@ -172,7 +172,15 @@ export function BrandBanners() {
               alt=""
               width={510}
               height={240}
-              className={styles.pidehImage}
+              className={`${styles.pidehImage} ${styles.pidehImageDesktop}`}
+              priority
+            />
+            <Image
+              src="/assets/pideh-food-mobile.png"
+              alt=""
+              width={1120}
+              height={1405}
+              className={`${styles.pidehImage} ${styles.pidehImageMobile}`}
               priority
             />
           </div>
