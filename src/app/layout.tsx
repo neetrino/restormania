@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Montserrat, Noto_Sans_Armenian } from "next/font/google";
 import localFont from "next/font/local";
+import { LocaleProvider } from "@/i18n/LocaleProvider";
 import "./globals.css";
 
 const notoArmenian = Noto_Sans_Armenian({
@@ -141,7 +142,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="hy"
       className={`${notoArmenian.variable} ${montserrat.variable} ${bebasNeue.variable} ${mirageExpanded.variable} ${braindRepublic.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <LocaleProvider>{children}</LocaleProvider>
+      </body>
     </html>
   );
 }

@@ -1,17 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslation } from "@/i18n/LocaleProvider";
 import styles from "./AboutSection.module.css";
 
-const ABOUT_PARAGRAPHS = [
-  "Սարյան 8 հասցեում՝ Kamancha Tapaka Rooms-ը հայկական խոհանոցի նոր փորձառություն է ներկայացնում՝ համադրված գինին վայելելու մշակույթի և Քամանչայի հյուրընկալության հետ։",
-  "Այստեղ մեկ մենյուում հավաքել ենք Քամանչայի ամենասիրված ու պահանջված ուտեստները՝ դրանք ներկայացնելով Սարյան փողոցի յուրահատուկ տրամադրությանը և գինու սիրահարների նախասիրություններին համապատասխան։",
-  "Kamancha Tapaka Rooms — հայկական սիրված համերն ու գինու մշակույթը՝ մեկ վայրում։",
-] as const;
-
 export function AboutSection() {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.section} id="about" aria-labelledby="about-title">
       <h2 className={styles.srOnly} id="about-title">
-        Restormania-ի մասին
+        {t.about.title}
       </h2>
       <div className={styles.grid}>
         <div className={styles.visual}>
@@ -25,7 +24,7 @@ export function AboutSection() {
           />
         </div>
         <div className={styles.copy}>
-          {ABOUT_PARAGRAPHS.map((paragraph) => (
+          {t.about.paragraphs.map((paragraph) => (
             <p key={paragraph} className={styles.text}>
               {paragraph}
             </p>

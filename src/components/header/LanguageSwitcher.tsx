@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { LOCALES, type Locale } from "@/i18n/locales";
+import { useTranslation } from "@/i18n/LocaleProvider";
 import styles from "./LanguageSwitcher.module.css";
 
-const LOCALES = [
-  { code: "hy", label: "HY" },
-  { code: "en", label: "EN" },
-  { code: "ru", label: "RU" },
-] as const;
-
-type LocaleCode = (typeof LOCALES)[number]["code"];
+const LOCALE_LABELS: Record<Locale, string> = {
+  hy: "HY",
+  en: "EN",
+  ru: "RU",
+};
 
 function GlobeIcon() {
   return (
@@ -32,14 +32,10 @@ function GlobeIcon() {
 }
 
 export function LanguageSwitcher() {
-  const [locale, setLocale] = useState<LocaleCode>("hy");
+  const { locale, setLocale, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const listId = useId();
-
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
 
   useEffect(() => {
     if (!open) {
@@ -67,11 +63,6 @@ export function LanguageSwitcher() {
     };
   }, [open]);
 
-  const selectLocale = (code: LocaleCode) => {
-    setLocale(code);
-    setOpen(false);
-  };
-
   return (
     <div className={styles.switcher} ref={rootRef}>
       <button
@@ -80,28 +71,32 @@ export function LanguageSwitcher() {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
-        aria-label="Language"
+        aria-label={t.language}
         onClick={() => setOpen((value) => !value)}
       >
         <GlobeIcon />
       </button>
 
       {open ? (
-        <ul className={styles.menu} id={listId} role="listbox" aria-label="Language">
-          {LOCALES.map((item) => (
-            <li
-              key={item.code}
-              role="option"
-              aria-selected={item.code === locale}
-            >
+        <ul
+          className={styles.menu}
+          id={listId}
+          role="listbox"
+          aria-label={t.language}
+        >
+          {LOCALES.map((code) => (
+            <li key={code} role="option" aria-selected={code === locale}>
               <button
                 type="button"
                 className={`${styles.option} ${
-                  item.code === locale ? styles.optionActive : ""
+                  code === locale ? styles.optionActive : ""
                 }`}
-                onClick={() => selectLocale(item.code)}
+                onClick={() => {
+                  setLocale(code);
+                  setOpen(false);
+                }}
               >
-                {item.label}
+                {LOCALE_LABELS[code]}
               </button>
             </li>
           ))}

@@ -1,11 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslation } from "@/i18n/LocaleProvider";
 import styles from "./FounderSection.module.css";
 
-const FOUNDER_BIO = `Արեգ Գևորգյանը հայ ռեստորատոր, ձեռնարկատեր և Kamancha ռեստորանների, Restormania և Pideh նախագծի հիմնադիր-տնօրենն է, որի մասնագիտական գործունեությունը հիմնականում կենտրոնացած է ռեստորանային բիզնեսի, հայկական գաստրոնոմիայի և հյուրընկալության ոլորտների զարգացման վրա։
-
-Ռեստորանային ոլորտում նրա առաջին խոշոր նախագծերից մեկը Armat Restaurant-ն էր, որը հիմնադրվել է 2017 թվականին։ Հետագայում ձևավորվել և զարգացել են Kamancha, Pideh, Kamancha Factory և Kamancha Tapaka Rooms նախագծերը՝ ընդգրկելով ռեստորանային գործունեության, արագ սննդի և սննդի առաքման տարբեր ուղղություններ։`;
-
 export function FounderSection() {
+  const { t } = useTranslation();
+
   return (
     <section
       className={styles.section}
@@ -13,13 +14,13 @@ export function FounderSection() {
       aria-labelledby="founder-title"
     >
       <h2 className={styles.srOnly} id="founder-title">
-        Հիմնադիր
+        {t.founder.title}
       </h2>
       <div className={styles.row}>
         <figure className={styles.portrait}>
           <Image
             src="/assets/founder.png"
-            alt="Արեգ Գևորգյան"
+            alt={t.founder.photoAlt}
             width={344}
             height={488}
             className={styles.photo}
@@ -28,7 +29,7 @@ export function FounderSection() {
         </figure>
 
         <article className={styles.card}>
-          <p className={styles.bio}>{FOUNDER_BIO}</p>
+          <p className={styles.bio}>{t.founder.bio}</p>
         </article>
 
         <div className={styles.stack} aria-hidden="true">

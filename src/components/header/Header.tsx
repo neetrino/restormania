@@ -3,14 +3,9 @@
 import Image from "next/image";
 import { useEffect, useState, type MouseEvent } from "react";
 import { PillLink } from "@/components/ui/PillLink";
+import { useTranslation } from "@/i18n/LocaleProvider";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import styles from "./Header.module.css";
-
-const NAV_LINKS = [
-  { href: "#about", label: "Restormania-ի մասին" },
-  { href: "#founder", label: "Հիմնադիր" },
-  { href: "#top", label: "Նախագծեր" },
-] as const;
 
 const SCROLL_THRESHOLD_PX = 12;
 
@@ -21,7 +16,14 @@ function scrollToPageTop(event: MouseEvent<HTMLAnchorElement>) {
 }
 
 export function Header() {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
+
+  const navLinks = [
+    { href: "#about", label: t.nav.about },
+    { href: "#founder", label: t.nav.founder },
+    { href: "#top", label: t.nav.projects },
+  ] as const;
 
   useEffect(() => {
     let rafId = 0;
@@ -72,10 +74,10 @@ export function Header() {
           />
         </a>
 
-        <nav className={styles.nav} aria-label="Հիմնական">
-          {NAV_LINKS.map((link) => (
+        <nav className={styles.nav} aria-label={t.nav.main}>
+          {navLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.href}
               className={styles.navLink}
               href={link.href}
               onClick={link.href === "#top" ? scrollToPageTop : undefined}

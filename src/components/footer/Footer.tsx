@@ -1,11 +1,8 @@
-import Image from "next/image";
-import styles from "./Footer.module.css";
+"use client";
 
-const NAV_LINKS = [
-  { href: "#about", label: "Մեր մասին" },
-  { href: "#projects", label: "Նորություններ" },
-  { href: "#contact", label: "Կապ" },
-] as const;
+import Image from "next/image";
+import { useTranslation } from "@/i18n/LocaleProvider";
+import styles from "./Footer.module.css";
 
 const SOCIAL_LINKS = [
   {
@@ -39,18 +36,26 @@ const SOCIAL_LINKS = [
 ] as const;
 
 export function Footer() {
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { href: "#about", label: t.footer.about },
+    { href: "#projects", label: t.footer.news },
+    { href: "#contact", label: t.footer.contactLink },
+  ] as const;
+
   return (
     <footer className={styles.footer} id="contact">
       <div className={styles.inner}>
         <div className={styles.top}>
-          <h2 className={styles.headline}>Երկու վայր, մեկ պատմություն</h2>
+          <h2 className={styles.headline}>{t.footer.headline}</h2>
 
           <div className={styles.columns}>
             <div className={styles.colStart}>
-              <h3 className={styles.colTitle}>Նավիգացիա</h3>
+              <h3 className={styles.colTitle}>{t.footer.navigation}</h3>
               <ul className={styles.list}>
-                {NAV_LINKS.map((link) => (
-                  <li key={link.label}>
+                {navLinks.map((link) => (
+                  <li key={link.href}>
                     <a href={link.href}>{link.label}</a>
                   </li>
                 ))}
@@ -58,16 +63,16 @@ export function Footer() {
             </div>
 
             <div className={styles.colEnd}>
-              <h3 className={styles.colTitle}>Կոնտակտ</h3>
+              <h3 className={styles.colTitle}>{t.footer.contact}</h3>
               <address className={styles.address}>
-                <p>Աբովյան 23, Երևան, Հայաստան</p>
+                <p>{t.footer.address}</p>
                 <p>
                   <a href="tel:+37410123456">+374 10 123 456</a>
                 </p>
                 <p>
                   <a href="mailto:info@kamancha.am">info@kamancha.am</a>
                 </p>
-                <p className={styles.hours}>Երկ–Կիր: 12:00 – 00:00</p>
+                <p className={styles.hours}>{t.footer.hours}</p>
               </address>
             </div>
           </div>
@@ -99,7 +104,7 @@ export function Footer() {
         </div>
 
         <p className={styles.copyright}>
-          Copyright © 2026 | All rights reserved | Created by{" "}
+          {t.footer.copyright}{" "}
           <a
             className={styles.credit}
             href="https://neetrino.com"

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { PillLink } from "@/components/ui/PillLink";
+import { useTranslation } from "@/i18n/LocaleProvider";
 import styles from "./BrandBanners.module.css";
 
 const INTRO_DELAY_MS = 420;
@@ -13,6 +14,7 @@ const LERP = 0.1;
 const easeOutCubic = (t: number): number => 1 - (1 - t) ** 3;
 
 export function BrandBanners() {
+  const { t } = useTranslation();
   const pidehRef = useRef<HTMLElement>(null);
   const kamanchaRef = useRef<HTMLElement>(null);
   const introRef = useRef(0);
@@ -127,7 +129,7 @@ export function BrandBanners() {
     <section
       className={styles.section}
       id="projects"
-      aria-label="Նախագծեր"
+      aria-label={t.brands.projectsLabel}
     >
       <div className={styles.stage}>
         <article ref={pidehRef} className={`${styles.banner} ${styles.pideh}`}>
@@ -142,7 +144,7 @@ export function BrandBanners() {
                 unoptimized
               />
               <PillLink href="#about" size="md">
-                Ավելին
+                {t.brands.more}
               </PillLink>
             </div>
           </div>
@@ -183,7 +185,7 @@ export function BrandBanners() {
                 unoptimized
               />
               <PillLink href="#about" size="md">
-                Ավելին
+                {t.brands.more}
               </PillLink>
             </div>
           </div>
