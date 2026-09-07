@@ -23,7 +23,7 @@ const SOCIAL_LINKS = [
     height: 24,
   },
   {
-    href: "#",
+    href: "https://www.instagram.com/restormania/",
     label: "Instagram",
     src: "/assets/social-instagram.svg",
     width: 23,
@@ -90,22 +90,28 @@ export function Footer() {
         </div>
 
         <div className={styles.social}>
-          {SOCIAL_LINKS.map((item) => (
-            <a
-              key={item.label}
-              className={styles.socialLink}
-              href={item.href}
-              aria-label={item.label}
-            >
-              <Image
-                className={styles.socialIcon}
-                src={item.src}
-                alt=""
-                width={item.width}
-                height={item.height}
-              />
-            </a>
-          ))}
+          {SOCIAL_LINKS.map((item) => {
+            const isExternal = item.href.startsWith("http");
+            return (
+              <a
+                key={item.label}
+                className={styles.socialLink}
+                href={item.href}
+                aria-label={item.label}
+                {...(isExternal
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                <Image
+                  className={styles.socialIcon}
+                  src={item.src}
+                  alt=""
+                  width={item.width}
+                  height={item.height}
+                />
+              </a>
+            );
+          })}
         </div>
 
         <p className={styles.copyright}>
