@@ -113,7 +113,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Neetrino IT Company
+            Neetrino
           </a>
         </Reveal>
       </RevealGroup>
