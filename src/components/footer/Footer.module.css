@@ -190,21 +190,40 @@
   }
 
   .columns {
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    gap: 24px;
   }
 
   .colStart,
-  .colMid,
+  .colMid {
+    flex: 1 1 40%;
+    max-width: calc(50% - 12px);
+    text-align: center;
+  }
+
   .colEnd {
-    flex: none;
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
     text-align: center;
   }
 
   .colStart .stores,
   .colMid .stores {
     align-items: center;
+  }
+
+  .storeLink {
+    width: 110px;
+    height: 32px;
+  }
+
+  .storeBadge {
+    width: 110px;
+    height: 32px;
   }
 
   .contactInfo {
