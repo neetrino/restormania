@@ -91,10 +91,6 @@
   opacity: 0.75;
 }
 
-.hours {
-  margin-top: 8px;
-}
-
 .careersButton {
   margin-top: 16px;
   align-self: flex-end;
@@ -112,6 +108,9 @@
   justify-content: center;
   width: 135px;
   height: 40px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
   transition: opacity 0.2s ease;
   line-height: 0;
 }
@@ -122,8 +121,8 @@
 
 .storeBadge {
   display: block;
-  width: 135px;
-  height: 40px;
+  width: 100%;
+  height: 100%;
   object-fit: fill;
 }
 
@@ -219,11 +218,7 @@
   .storeLink {
     width: 110px;
     height: 32px;
-  }
-
-  .storeBadge {
-    width: 110px;
-    height: 32px;
+    border-radius: 12px;
   }
 
   .contactInfo {

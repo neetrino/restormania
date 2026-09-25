@@ -1,0 +1,362 @@
+.trigger.trigger {
+  border-radius: 15px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(1, 0, 0, 0.62);
+  animation: careersFade 0.2s ease;
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(100%, 440px);
+  max-height: min(100%, calc(100dvh - 24px));
+  overflow: auto;
+  padding: 28px 22px 22px;
+  border-radius: 28px;
+  background: var(--color-white);
+  color: var(--color-ink);
+  overscroll-behavior: contain;
+}
+
+.panel:focus {
+  outline: none;
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background: rgba(1, 0, 0, 0.06);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.close:hover {
+  background: rgba(1, 0, 0, 0.12);
+}
+
+.title {
+  padding-right: 40px;
+  font-family: var(--font-headline);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.intro {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.phone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--color-yellow);
+  text-align: center;
+  text-decoration: none;
+}
+
+.phone:hover {
+  opacity: 0.88;
+}
+
+.phoneLabel {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.phoneNumber {
+  font-family: var(--font-headline);
+  font-size: clamp(26px, 8vw, 34px);
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.detailPair {
+  display: grid;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.field input {
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid rgba(1, 0, 0, 0.18);
+  border-radius: 12px;
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.field input:focus {
+  outline: 2px solid var(--color-black);
+  border-color: transparent;
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.cvButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid rgba(1, 0, 0, 0.18);
+  border-radius: 12px;
+  background: var(--color-white);
+  cursor: pointer;
+}
+
+.cvPlaceholder,
+.cvValue {
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cvPlaceholder {
+  color: rgba(23, 23, 23, 0.45);
+}
+
+.cvValue {
+  color: var(--color-ink);
+}
+
+.cvButton:hover {
+  background: rgba(1, 0, 0, 0.04);
+}
+
+.cvButton:focus-within {
+  outline: 2px solid var(--color-black);
+}
+
+.cvInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.submit {
+  height: 48px;
+  margin-top: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.error {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
+  color: #8a1c1c;
+}
+
+.success {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--color-kamancha);
+}
+
+@keyframes careersFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes careersSheetIn {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes careersSheetOut {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes careersFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes careersModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes careersModalOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+.overlayDismiss {
+  animation: careersFadeOut 0.28s ease forwards;
+}
+
+@media (max-width: 743px) {
+  .overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .panel {
+    width: 100%;
+    max-height: min(92dvh, 100%);
+    padding: 20px 20px calc(16px + env(safe-area-inset-bottom));
+    border-radius: 22px 22px 0 0;
+    animation: careersSheetIn 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    touch-action: pan-y;
+  }
+
+  .cvButton {
+    padding: 0 8px;
+  }
+
+  .cvPlaceholder,
+  .cvValue {
+    font-size: 11px;
+  }
+
+  .panelDismiss {
+    animation: careersSheetOut 0.28s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+}
+
+@media (min-width: 744px) {
+  .overlay {
+    align-items: center;
+    padding: 32px;
+  }
+
+  .panel {
+    width: min(100%, 560px);
+    padding: 32px 28px 28px;
+    animation: careersModalIn 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .panelDismiss {
+    animation: careersModalOut 0.28s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+
+  .pair {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .panel,
+  .panelDismiss,
+  .overlayDismiss {
+    animation: none;
+  }
+}

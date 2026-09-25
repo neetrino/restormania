@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { fadeIn, fadeUp } from "@/components/motion/presets";
-import { PillLink } from "@/components/ui/PillLink";
+import { OpenPositionsButton } from "@/components/careers/OpenPositionsButton";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import styles from "./Footer.module.css";
 
@@ -108,15 +108,7 @@ export function Footer() {
                     kamancharest@gmail.com
                   </a>
                 </p>
-                <p className={styles.hours}>{t.footer.hours}</p>
-                <PillLink
-                  href="#"
-                  variant="solid"
-                  size="sm"
-                  className={styles.careersButton}
-                >
-                  {t.footer.openPositions}
-                </PillLink>
+                <OpenPositionsButton className={styles.careersButton} />
               </div>
             </div>
           </div>
