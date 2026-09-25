@@ -19,17 +19,40 @@
   display: flex;
   align-items: stretch;
   justify-content: center;
-  gap: 16px;
-  width: min(100%, 1280px);
+  gap: 21px;
+  width: min(100%, 1305px);
   margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  flex: 1 1 656px;
+  width: 656px;
+  max-width: 100%;
+  min-height: 488px;
+  padding: 98px 43px 68px;
+  border-radius: 30px;
+  background: var(--color-black);
+  box-sizing: border-box;
+}
+
+.bio {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 26px;
+  color: var(--color-yellow);
+  white-space: pre-line;
 }
 
 .portrait {
   margin: 0;
-  flex: 0 0 320px;
-  width: 320px;
+  flex: 0 1 628px;
+  width: 628px;
+  max-width: 100%;
   height: 488px;
-  border: 6px solid var(--color-black);
+  border: 4px solid var(--color-black);
   border-radius: 30px;
   overflow: hidden;
   background: var(--color-black);
@@ -40,53 +63,27 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: 42% center;
 }
 
-.card {
-  display: flex;
-  align-items: center;
-  flex: 0 1 520px;
-  width: 520px;
-  min-height: 488px;
-  padding: 48px 40px;
-  border-radius: 30px;
-  background: var(--color-black);
-  box-sizing: border-box;
-}
+@media (max-width: 1100px) {
+  .row {
+    gap: 16px;
+  }
 
-.bio {
-  font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 23px;
-  color: var(--color-yellow);
-  white-space: pre-line;
-}
+  .card {
+    flex: 1 1 480px;
+    width: auto;
+    padding: 48px 32px;
+    min-height: 400px;
+  }
 
-.stack {
-  position: relative;
-  flex: 0 0 400px;
-  width: 400px;
-  height: 488px;
-}
-
-.stackFront,
-.stackBack {
-  position: absolute;
-  top: 0;
-  width: 320px;
-  max-width: 320px;
-}
-
-.stackFront {
-  left: 0;
-  z-index: 2;
-}
-
-.stackBack {
-  left: 70px;
-  z-index: 1;
+  .portrait {
+    flex: 0 1 460px;
+    width: auto;
+    height: auto;
+    aspect-ratio: 628 / 488;
+  }
 }
 
 @media (max-width: 743px) {
@@ -100,18 +97,22 @@
     gap: 20px;
   }
 
-  .stack {
-    display: none;
+  .card {
+    order: 2;
+    width: 100%;
+    min-height: auto;
+    padding: 40px 28px;
+  }
+
+  .bio {
+    font-size: 16px;
+    line-height: 23px;
   }
 
   .portrait {
-    flex-basis: auto;
-    width: min(100%, 320px);
-    height: 440px;
-  }
-
-  .card {
-    width: 100%;
-    min-height: auto;
+    order: 1;
+    width: min(100%, 628px);
+    height: auto;
+    aspect-ratio: 628 / 488;
   }
 }
