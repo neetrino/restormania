@@ -31,7 +31,7 @@ const BRAND_BLOCKS = [
 
 const SOCIAL_LINKS = [
   {
-    href: "#",
+    href: "https://www.facebook.com/aregface",
     label: "Facebook",
     src: "/assets/social-facebook.svg",
     width: 24,
@@ -45,18 +45,11 @@ const SOCIAL_LINKS = [
     height: 23,
   },
   {
-    href: "#",
-    label: "Telegram",
-    src: "/assets/social-telegram.svg",
-    width: 26,
-    height: 23,
-  },
-  {
-    href: "#",
-    label: "WhatsApp",
-    src: "/assets/social-whatsapp.svg",
-    width: 26,
-    height: 26,
+    href: "https://www.tiktok.com/@restormania",
+    label: "TikTok",
+    src: "/assets/social-tiktok.svg",
+    width: 42,
+    height: 42,
   },
 ] as const;
 
