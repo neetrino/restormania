@@ -54,27 +54,26 @@
 }
 
 .colStart {
+  flex: 1 1 0;
   text-align: left;
 }
 
+.colMid {
+  flex: 1 1 0;
+  text-align: center;
+}
+
 .colEnd {
+  flex: 1 1 0;
   text-align: right;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  list-style: none;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
+.colStart .stores {
+  align-items: flex-start;
 }
 
-.list a:hover,
-.address a:hover {
-  opacity: 0.75;
+.colMid .stores {
+  align-items: center;
 }
 
 .address {
@@ -88,8 +87,39 @@
   line-height: 20px;
 }
 
+.address a:hover {
+  opacity: 0.75;
+}
+
 .hours {
   margin-top: 8px;
+}
+
+.stores {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.storeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 135px;
+  height: 40px;
+  transition: opacity 0.2s ease;
+  line-height: 0;
+}
+
+.storeLink:hover {
+  opacity: 0.85;
+}
+
+.storeBadge {
+  display: block;
+  width: 135px;
+  height: 40px;
+  object-fit: fill;
 }
 
 .social {
@@ -161,11 +191,14 @@
   }
 
   .colStart,
+  .colMid,
   .colEnd {
+    flex: none;
     text-align: center;
   }
 
-  .list {
+  .colStart .stores,
+  .colMid .stores {
     align-items: center;
   }
 
