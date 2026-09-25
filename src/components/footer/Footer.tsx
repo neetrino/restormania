@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { fadeIn, fadeUp } from "@/components/motion/presets";
+import { PillLink } from "@/components/ui/PillLink";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import styles from "./Footer.module.css";
 
@@ -105,16 +106,25 @@ export function Footer() {
 
             <div className={styles.colEnd}>
               <h3 className={styles.colTitle}>{t.footer.contact}</h3>
-              <address className={styles.address}>
-                <p>{t.footer.address}</p>
+              <div className={styles.contactInfo}>
                 <p>
                   <a href="tel:+37441181718">+ 374 41 18 17 18</a>
                 </p>
                 <p>
-                  <a href="mailto:kamancharest@gmail.com">kamancharest@gmail.com</a>
+                  <a href="mailto:kamancharest@gmail.com">
+                    kamancharest@gmail.com
+                  </a>
                 </p>
                 <p className={styles.hours}>{t.footer.hours}</p>
-              </address>
+                <PillLink
+                  href="#"
+                  variant="solid"
+                  size="sm"
+                  className={styles.careersButton}
+                >
+                  {t.footer.openPositions}
+                </PillLink>
+              </div>
             </div>
           </div>
         </Reveal>

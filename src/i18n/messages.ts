@@ -32,6 +32,7 @@ export type Messages = {
     contactLink: string;
     address: string;
     hours: string;
+    openPositions: string;
     copyright: string;
     createdBy: string;
   };
@@ -75,6 +76,7 @@ export const messages: Record<Locale, Messages> = {
       contactLink: "Կապ",
       address: "Աբովյան 23, Երևան, Հայաստան",
       hours: "Երկ–Կիր: 12:00 – 00:00",
+      openPositions: "Ազատ Հաստիքներ",
       copyright: "© 2026 | All rights reserved",
       createdBy: "Created by",
     },
@@ -116,6 +118,7 @@ export const messages: Record<Locale, Messages> = {
       contactLink: "Contact",
       address: "23 Abovyan St, Yerevan, Armenia",
       hours: "Mon–Sun: 12:00 – 00:00",
+      openPositions: "Open Positions",
       copyright: "© 2026 | All rights reserved",
       createdBy: "Created by",
     },
@@ -157,6 +160,7 @@ export const messages: Record<Locale, Messages> = {
       contactLink: "Связь",
       address: "ул. Абовяна 23, Ереван, Армения",
       hours: "Пн–Вс: 12:00 – 00:00",
+      openPositions: "Открытые вакансии",
       copyright: "© 2026 | All rights reserved",
       createdBy: "Created by",
     },
