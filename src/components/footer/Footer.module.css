@@ -178,4 +178,13 @@
     max-width: 100%;
     padding: 0 8px;
   }
+
+  .copyrightSep {
+    display: none;
+  }
+
+  .copyrightCredit {
+    display: block;
+    margin-top: 0.35em;
+  }
 }

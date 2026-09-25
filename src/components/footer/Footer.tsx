@@ -106,15 +106,22 @@ export function Footer() {
         </Reveal>
 
         <Reveal as="p" className={styles.copyright} variants={fadeUp} child>
-          {t.footer.copyright}{" "}
-          <a
-            className={styles.credit}
-            href="https://neetrino.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Neetrino
-          </a>
+          <span className={styles.copyrightMain}>{t.footer.copyright}</span>
+          <span className={styles.copyrightSep} aria-hidden="true">
+            {" "}
+            |{" "}
+          </span>
+          <span className={styles.copyrightCredit}>
+            {t.footer.createdBy}{" "}
+            <a
+              className={styles.credit}
+              href="https://neetrino.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Neetrino
+            </a>
+          </span>
         </Reveal>
       </RevealGroup>
     </footer>
