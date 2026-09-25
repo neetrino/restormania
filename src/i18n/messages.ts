@@ -31,10 +31,29 @@ export type Messages = {
     news: string;
     contactLink: string;
     address: string;
-    hours: string;
     openPositions: string;
     copyright: string;
     createdBy: string;
+  };
+  careers: {
+    title: string;
+    phoneLabel: string;
+    intro: string;
+    firstName: string;
+    lastName: string;
+    age: string;
+    residence: string;
+    position: string;
+    cv: string;
+    cvHint: string;
+    submit: string;
+    sending: string;
+    success: string;
+    close: string;
+    invalid: string;
+    cvInvalid: string;
+    rateLimited: string;
+    sendFailed: string;
   };
   language: string;
 };
@@ -75,10 +94,29 @@ export const messages: Record<Locale, Messages> = {
       news: "Նորություններ",
       contactLink: "Կապ",
       address: "Աբովյան 23, Երևան, Հայաստան",
-      hours: "Երկ–Կիր: 12:00 – 00:00",
       openPositions: "Ազատ Հաստիքներ",
       copyright: "© 2026 | All rights reserved",
       createdBy: "Created by",
+    },
+    careers: {
+      title: "Ազատ հաստիքներ",
+      phoneLabel: "HR հեռախոս",
+      intro: "Լրացրեք տվյալները և ուղարկեք։ Դիմումը կհասնի HR բաժին։",
+      firstName: "Անուն",
+      lastName: "Ազգանուն",
+      age: "Տարիք",
+      residence: "Բնակության վայր",
+      position: "Որ հաստիքով եք հետաքրքրված",
+      cv: "Կցել CV",
+      cvHint: "PDF կամ Word, մինչև 4 ՄԲ",
+      submit: "Ուղարկել",
+      sending: "Ուղարկվում է…",
+      success: "Շնորհակալություն։ HR բաժինը կստանա ձեր տվյալները։",
+      close: "Փակել",
+      invalid: "Ստուգեք լրացված դաշտերը։ Տարիքը՝ 16–70։",
+      cvInvalid: "Կցեք PDF կամ Word ֆայլ, մինչև 4 ՄԲ։",
+      rateLimited: "Շատ հարցումներ եք ուղարկել։ Փորձեք մի փոքր ուշ։",
+      sendFailed: "Չհաջողվեց ուղարկել։ Զանգահարեք HR համարին։",
     },
     language: "Լեզու",
   },
@@ -117,10 +155,29 @@ export const messages: Record<Locale, Messages> = {
       news: "News",
       contactLink: "Contact",
       address: "23 Abovyan St, Yerevan, Armenia",
-      hours: "Mon–Sun: 12:00 – 00:00",
       openPositions: "Open Positions",
       copyright: "© 2026 | All rights reserved",
       createdBy: "Created by",
+    },
+    careers: {
+      title: "Open positions",
+      phoneLabel: "HR phone",
+      intro: "Fill in your details and send them. The application goes to HR.",
+      firstName: "First name",
+      lastName: "Last name",
+      age: "Age",
+      residence: "Place of residence",
+      position: "Position you are interested in",
+      cv: "Upload CV",
+      cvHint: "PDF or Word, up to 4 MB",
+      submit: "Send",
+      sending: "Sending…",
+      success: "Thank you. HR will receive your details.",
+      close: "Close",
+      invalid: "Check the fields. Age must be between 16 and 70.",
+      cvInvalid: "Attach a PDF or Word file up to 4 MB.",
+      rateLimited: "Too many attempts. Please try again later.",
+      sendFailed: "Could not send the application. Please call HR.",
     },
     language: "Language",
   },
@@ -159,10 +216,29 @@ export const messages: Record<Locale, Messages> = {
       news: "Новости",
       contactLink: "Связь",
       address: "ул. Абовяна 23, Ереван, Армения",
-      hours: "Пн–Вс: 12:00 – 00:00",
       openPositions: "Открытые вакансии",
       copyright: "© 2026 | All rights reserved",
       createdBy: "Created by",
+    },
+    careers: {
+      title: "Открытые вакансии",
+      phoneLabel: "Телефон HR",
+      intro: "Заполните данные и отправьте. Заявка придёт в HR.",
+      firstName: "Имя",
+      lastName: "Фамилия",
+      age: "Возраст",
+      residence: "Место проживания",
+      position: "Какая вакансия вас интересует",
+      cv: "Прикрепить CV",
+      cvHint: "PDF или Word, до 4 МБ",
+      submit: "Отправить",
+      sending: "Отправка…",
+      success: "Спасибо. HR получит ваши данные.",
+      close: "Закрыть",
+      invalid: "Проверьте поля. Возраст — от 16 до 70.",
+      cvInvalid: "Прикрепите PDF или Word до 4 МБ.",
+      rateLimited: "Слишком много попыток. Попробуйте позже.",
+      sendFailed: "Не удалось отправить. Позвоните в HR.",
     },
     language: "Язык",
   },
