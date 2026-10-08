@@ -148,11 +148,13 @@
 
 .brandFilters .filterPideh {
   color: var(--color-pideh);
+  font-size: 18px;
   font-weight: 700;
 }
 
 .brandFilters .filterKamancha {
   color: var(--color-kamancha);
+  font-size: 18px;
   font-weight: 700;
 }
 
