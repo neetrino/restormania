@@ -5,6 +5,7 @@ import type { CvAttachment } from "./cv-file";
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const EMAIL_REQUEST_TIMEOUT_MS = 20_000;
 const DEFAULT_HR_EMAIL = "kamancharest@gmail.com";
+const DEFAULT_FROM_EMAIL = "noreply@mail.neetrino.com";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type MailConfig = {
@@ -23,17 +24,12 @@ function configured(value: string | undefined): string | null {
   return trimmed;
 }
 
-function emailAddress(value: string): string {
-  const wrapped = value.match(/<([^>]+)>/);
-  return wrapped?.[1]?.trim() ?? value;
-}
-
 function readMailConfig(): MailConfig | null {
   const apiKey = configured(process.env.RESEND_API_KEY);
-  const from = configured(process.env.RESEND_FROM_EMAIL);
+  const from = DEFAULT_FROM_EMAIL;
   const to = configured(process.env.HR_NOTIFY_EMAIL) ?? DEFAULT_HR_EMAIL;
 
-  if (!apiKey || !from || !EMAIL_PATTERN.test(emailAddress(from)) || !EMAIL_PATTERN.test(to)) {
+  if (!apiKey || !EMAIL_PATTERN.test(to)) {
     return null;
   }
 
@@ -92,7 +88,11 @@ export async function notifyHr(
     });
 
     if (!response.ok) {
-      logError("Career mail was rejected", { status: response.status });
+      const detail = await response.text().catch(() => "");
+      logError("Career mail was rejected", {
+        status: response.status,
+        detail: detail.slice(0, 500),
+      });
       return "send_failed";
     }
 
