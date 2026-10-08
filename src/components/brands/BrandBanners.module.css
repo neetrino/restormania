@@ -146,6 +146,16 @@
   display: none;
 }
 
+.brandFilters .filterPideh {
+  color: var(--color-pideh);
+  font-weight: 700;
+}
+
+.brandFilters .filterKamancha {
+  color: var(--color-kamancha);
+  font-weight: 700;
+}
+
 @keyframes pidehDrift {
   0%,
   100% {

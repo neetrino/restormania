@@ -263,10 +263,10 @@ export function BrandBanners() {
       </div>
 
       <div className={styles.brandFilters}>
-        <PillLink href={PIDEH_URL} size="md">
+        <PillLink href={PIDEH_URL} size="md" className={styles.filterPideh}>
           Pideh
         </PillLink>
-        <PillLink href={KAMANCHA_URL} size="md">
+        <PillLink href={KAMANCHA_URL} size="md" className={styles.filterKamancha}>
           Kamancha
         </PillLink>
       </div>
