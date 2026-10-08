@@ -32,8 +32,7 @@ export function FounderSection() {
           <Image
             src="/assets/founder.png"
             alt={t.founder.photoAlt}
-            width={628}
-            height={488}
+            fill
             sizes="(max-width: 743px) 100vw, 628px"
             className={styles.photo}
             priority

@@ -146,6 +146,18 @@
   display: none;
 }
 
+.brandFilters .filterPideh {
+  color: var(--color-pideh);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.brandFilters .filterKamancha {
+  color: var(--color-kamancha);
+  font-size: 18px;
+  font-weight: 700;
+}
+
 @keyframes pidehDrift {
   0%,
   100% {
@@ -270,10 +282,12 @@
   }
 
   .pideh {
+    order: 2;
     clip-path: inset(-80px -8% 0 0 round 60px);
   }
 
   .kamancha {
+    order: 1;
     clip-path: inset(-28px 0 0 0 round 60px);
     border-radius: 60px;
   }
@@ -434,6 +448,14 @@
     gap: 12px;
     margin-top: 34px;
     padding: 0 20px;
+  }
+
+  .brandFilters a:nth-child(1) {
+    order: 2;
+  }
+
+  .brandFilters a:nth-child(2) {
+    order: 1;
   }
 }
 

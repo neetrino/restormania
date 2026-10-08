@@ -141,8 +141,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="hy"
       className={`${notoArmenian.variable} ${montserrat.variable} ${bebasNeue.variable} ${mirageExpanded.variable} ${braindRepublic.variable}`}
+      suppressHydrationWarning
     >
-      <body>
+      <body suppressHydrationWarning>
         <LocaleProvider>{children}</LocaleProvider>
       </body>
     </html>
