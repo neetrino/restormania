@@ -26,10 +26,10 @@
 .logo {
   position: relative;
   display: block;
-  width: min(100%, 422px);
+  width: min(100%, 280px);
   height: auto;
   aspect-ratio: 422 / 324;
-  margin: 0 auto -25px;
+  margin: 0 auto -16px;
 }
 
 .barBottom,
@@ -93,7 +93,7 @@
 
 .colMid {
   flex: 1 1 0;
-  text-align: center;
+  text-align: left;
 }
 
 .colEnd {
@@ -102,11 +102,11 @@
 }
 
 .colStart .stores {
-  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .colMid .stores {
-  align-items: center;
+  justify-content: flex-start;
 }
 
 .contactInfo {
@@ -131,16 +131,20 @@
 
 .stores {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: 8px;
+  width: 100%;
 }
 
 .storeLink {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  width: 135px;
-  height: 40px;
+  width: 108px;
+  height: 32px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 15px;
@@ -223,8 +227,8 @@
 
   .colStart,
   .colMid {
-    flex: 1 1 40%;
-    max-width: calc(50% - 12px);
+    flex: 1 1 100%;
+    max-width: 100%;
     text-align: center;
   }
 
@@ -237,11 +241,11 @@
 
   .colStart .stores,
   .colMid .stores {
-    align-items: center;
+    justify-content: center;
   }
 
   .storeLink {
-    width: 110px;
+    width: 108px;
     height: 32px;
     border-radius: 12px;
   }

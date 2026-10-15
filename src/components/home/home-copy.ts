@@ -6,6 +6,7 @@ export type HomeCopy = {
   projectsBadge: string;
   projectsNote: string;
   tumanyan: string;
+  tumanyanBody: string;
   saryanTitle: string;
   saryanBody: string;
   factoryTitle: string;
@@ -31,6 +32,8 @@ const hy: HomeCopy = {
   projectsNote:
     "Restormania-ի առանձնահատկություններից մեկը բիզնեսի իրական գործընթացների հնարավորինս բաց ներկայացումն է։",
   tumanyan: "Թումանյան 23",
+  tumanyanBody:
+    "հասցեում, ստեղծել ենք մի միջավայր, որտեղ հայկական համերը, երաժշտությունն ու ջերմ հյուրընկալությունը միահյուսվում են՝ յուրաքանչյուր այցը դարձնելով ամբողջական հայկական փորձառություն։",
   saryanTitle: "Սարյան 8",
   saryanBody:
     "հասցեում՝ Kamancha Tapaka Rooms-ը հայկական խոհանոցի նոր փորձառություն է ներկայացնում՝ համադրված գինին վայելելու մշակույթի և Քամանչայի հյուրընկալության հետ։",
@@ -65,6 +68,8 @@ const en: HomeCopy = {
   projectsNote:
     "One thing that sets Restormania apart is how openly it shows the real work of the business.",
   tumanyan: "Tumanyan 23",
+  tumanyanBody:
+    "we created a place where Armenian flavors, music, and warm hospitality come together, so every visit feels like a full Armenian experience.",
   saryanTitle: "Saryan 8",
   saryanBody:
     "Kamancha Tapaka Rooms is a new take on Armenian cuisine, paired with wine and Kamancha hospitality.",
@@ -99,6 +104,8 @@ const ru: HomeCopy = {
   projectsNote:
     "Особенность Restormania — максимально открытый рассказ о реальных процессах бизнеса.",
   tumanyan: "Туманян 23",
+  tumanyanBody:
+    "мы создали место, где армянские вкусы, музыка и тёплое гостеприимство сплетаются, и каждый визит становится цельным армянским опытом.",
   saryanTitle: "Сарьян 8",
   saryanBody:
     "Kamancha Tapaka Rooms — новый опыт армянской кухни вместе с вином и гостеприимством Каманчи.",

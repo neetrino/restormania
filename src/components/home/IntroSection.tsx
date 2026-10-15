@@ -53,7 +53,7 @@ export function IntroSection() {
       <figure className={styles.portrait}>
         <Image
           className={styles.photo}
-          src="/assets/home/founder-portrait.png"
+          src="/assets/home/founder-portrait.jpg"
           alt={t.founder.photoAlt}
           fill
           sizes="(max-width: 743px) 100vw, 650px"

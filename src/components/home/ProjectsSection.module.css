@@ -9,7 +9,7 @@
   grid-template-columns: 697px 455px;
   justify-content: space-between;
   align-items: start;
-  margin-bottom: 36px;
+  margin-bottom: 72px;
 }
 
 .title {
@@ -35,14 +35,14 @@
   display: block;
   width: 551.296px;
   height: 78px;
-  margin: 19px 0 19px 2px;
+  margin: -8px 0 19px 2px;
   max-width: none;
   transform: rotate(-4deg);
 }
 
 .badgeText {
   display: inline-block;
-  margin: 19px 0 19px 2px;
+  margin: -8px 0 19px 2px;
   padding: 4px 18px 6px;
   border-radius: 6px;
   background: var(--color-black);
@@ -104,6 +104,51 @@
   height: 716px;
   max-width: none;
   object-fit: cover;
+  transition: left 0.45s ease;
+}
+
+.tumanyan:hover .cover,
+.tumanyan:focus-within .cover {
+  left: 156px;
+}
+
+.tumanyanPanel {
+  position: absolute;
+  top: -14px;
+  left: -69px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 28px;
+  width: 319px;
+  height: 462px;
+  padding: 48px 42px 33px 89px;
+  overflow: hidden;
+  border-radius: 40px;
+  background: var(--color-white);
+  transform: translateX(-250px);
+  transition: transform 0.45s ease;
+}
+
+.tumanyan:hover .tumanyanPanel,
+.tumanyan:focus-within .tumanyanPanel {
+  transform: translateX(0);
+}
+
+.tumanyanPanel p {
+  width: 188px;
+  margin: 0;
+  color: var(--color-black);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.tumanyanCta {
+  align-self: flex-end;
 }
 
 .placePill {
@@ -236,11 +281,13 @@
   left: 355px;
   width: 466px;
   height: 480px;
+  overflow: hidden;
+  border-radius: 35px;
 }
 
 .factoryPhoto {
-  object-fit: cover;
-  object-position: bottom center;
+  max-width: none;
+  object-fit: fill;
   transform: scaleX(-1);
 }
 
@@ -314,7 +361,7 @@
 }
 
 .pideh .cardCta {
-  top: 275px;
+  top: 281px;
   left: 18px;
 }
 
@@ -343,11 +390,11 @@
   .badge {
     width: min(100%, 320px);
     height: auto;
-    margin: 12px 0 8px;
+    margin: 0 0 8px;
   }
 
   .badgeText {
-    margin: 12px 0 8px;
+    margin: 0 0 8px;
     font-size: 42px;
     line-height: 1;
   }
@@ -373,9 +420,37 @@
     height: 100%;
   }
 
+  .tumanyan:hover .cover,
+  .tumanyan:focus-within .cover {
+    left: 0;
+  }
+
   .tumanyan {
     height: 280px;
     min-height: 0;
+  }
+
+  .tumanyanPanel {
+    top: 0;
+    left: 0;
+    width: min(78%, 280px);
+    height: 100%;
+    transform: translateX(-105%);
+  }
+
+  .tumanyanPanel p {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    margin: 24px 20px 16px;
+  }
+
+  .tumanyanCta {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 20px 20px;
   }
 
   .saryan .darkPill,
@@ -426,6 +501,11 @@
     width: 48%;
     height: 100%;
     opacity: 0.28;
+  }
+
+  .factoryPhoto {
+    object-fit: cover;
+    object-position: bottom center;
   }
 
   .pidehSpin {

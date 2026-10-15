@@ -31,7 +31,7 @@ export function ProjectsSection() {
         <p className={styles.note}>{copy.projectsNote}</p>
       </header>
       <div className={styles.rowEqual}>
-        <TumanyanCard label={copy.tumanyan} />
+        <TumanyanCard copy={copy} more={t.brands.more} />
         <SaryanCard copy={copy} more={t.brands.more} />
       </div>
       <div className={styles.rowSplit}>
@@ -42,7 +42,7 @@ export function ProjectsSection() {
   );
 }
 
-function TumanyanCard({ label }: { label: string }) {
+function TumanyanCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
     <article className={styles.tumanyan}>
       <Image
@@ -52,7 +52,13 @@ function TumanyanCard({ label }: { label: string }) {
         width={640}
         height={716}
       />
-      <span className={styles.placePill}>{label}</span>
+      <span className={styles.placePill}>{copy.tumanyan}</span>
+      <div className={styles.tumanyanPanel}>
+        <p>{copy.tumanyanBody}</p>
+        <PillLink href={KAMANCHA_URL} variant="kamancha" size="md" className={styles.tumanyanCta}>
+          {more}
+        </PillLink>
+      </div>
     </article>
   );
 }
