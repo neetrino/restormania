@@ -1,0 +1,132 @@
+.intro {
+  display: grid;
+  grid-template-columns: 631px 648px;
+  column-gap: 31px;
+  row-gap: 36px;
+  justify-content: space-between;
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: 0 60px 80px 70px;
+  align-items: start;
+}
+
+.wordmark {
+  position: relative;
+  width: 662px;
+  height: 512px;
+  margin-top: -145px;
+  margin-left: -49px;
+  justify-self: start;
+}
+
+.barTop,
+.barBottom,
+.letters {
+  position: absolute;
+  max-width: none;
+  object-fit: fill;
+}
+
+.barTop {
+  top: 34.7%;
+  left: 8.71%;
+  width: 70.83%;
+  height: 39.32%;
+}
+
+.barBottom {
+  top: 67.2%;
+  left: 36.41%;
+  width: 59.15%;
+  height: 28.07%;
+}
+
+.letters {
+  top: 39.57%;
+  left: 12.69%;
+  width: 78.22%;
+  height: 52.1%;
+}
+
+.lead {
+  width: 589px;
+  max-width: 100%;
+  margin-top: 98px;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-black);
+}
+
+.lead strong {
+  font-weight: 700;
+}
+
+.bio {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23px;
+  text-align: right;
+  white-space: pre-wrap;
+  color: var(--color-black);
+}
+
+.bio strong {
+  font-weight: 700;
+}
+
+.portrait {
+  position: relative;
+  width: 648px;
+  max-width: 100%;
+  height: 455px;
+  margin: -107px 0 0;
+  overflow: hidden;
+  border: 7px solid var(--color-black);
+  border-radius: 20px;
+  background: var(--color-black);
+}
+
+.photo {
+  object-fit: cover;
+  object-position: bottom center;
+}
+
+@media (max-width: 743px) {
+  .intro {
+    grid-template-columns: 1fr;
+    padding: 0 16px 48px;
+    row-gap: 20px;
+  }
+
+  .wordmark {
+    width: min(100%, 320px);
+    height: auto;
+    aspect-ratio: 662 / 512;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .lead {
+    width: auto;
+    margin-top: 0;
+    order: 2;
+  }
+
+  .portrait {
+    order: 3;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 648 / 455;
+    margin-top: 0;
+  }
+
+  .bio {
+    order: 4;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: left;
+  }
+}

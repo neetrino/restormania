@@ -84,7 +84,36 @@ export function Footer() {
     <footer className={styles.footer} id="contact">
       <RevealGroup className={styles.inner} as="div">
         <Reveal className={styles.top} variants={fadeUp} child>
-          <h2 className={styles.headline}>{t.footer.headline}</h2>
+          <a className={styles.logo} href="#top" aria-label="Restormania">
+            <Image
+              className={styles.barBottom}
+              src="/assets/home/footer/bar-bottom.svg"
+              alt=""
+              width={250}
+              height={91}
+            />
+            <Image
+              className={styles.barTop}
+              src="/assets/home/footer/bar-top.svg"
+              alt=""
+              width={299}
+              height={127}
+            />
+            <Image
+              className={styles.atMark}
+              src="/assets/home/footer/at.svg"
+              alt=""
+              width={108}
+              height={129}
+            />
+            <Image
+              className={styles.letters}
+              src="/assets/home/footer/letters.svg"
+              alt=""
+              width={366}
+              height={238}
+            />
+          </a>
 
           <div className={styles.columns}>
             {BRAND_BLOCKS.map((brand) => (

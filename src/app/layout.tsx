@@ -36,6 +36,13 @@ const braindRepublic = localFont({
   weight: "400",
 });
 
+const bigFatBoii = localFont({
+  src: "../fonts/BigFatBoii-Regular.otf",
+  variable: "--font-big-fat-boii",
+  display: "swap",
+  weight: "400",
+});
+
 function isLocalhostUrl(value: string): boolean {
   try {
     const { hostname } = new URL(value);
@@ -140,7 +147,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="hy"
-      className={`${notoArmenian.variable} ${montserrat.variable} ${bebasNeue.variable} ${mirageExpanded.variable} ${braindRepublic.variable}`}
+      className={`${notoArmenian.variable} ${montserrat.variable} ${bebasNeue.variable} ${mirageExpanded.variable} ${braindRepublic.variable} ${bigFatBoii.variable}`}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>

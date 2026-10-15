@@ -3,11 +3,11 @@
   background: var(--color-yellow);
   color: var(--color-black);
   overflow-x: clip;
-  padding-top: calc(var(--header-height) + 24px);
+  padding-top: var(--header-height);
 }
 
 @media (max-width: 743px) {
   .page {
-    padding-top: 100px;
+    padding-top: 148px;
   }
 }
