@@ -49,21 +49,20 @@
 
 .logo {
   position: relative;
-  display: block;
+  display: flex;
   flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
   width: 82px;
   height: 66px;
 }
 
 .logoMark {
-  position: absolute;
-  top: 18.22%;
-  right: 0.41%;
-  bottom: 8.33%;
-  left: 8.28%;
-  width: auto;
-  height: auto;
+  position: static;
+  width: 75px;
+  height: 48px;
   max-width: none;
+  object-fit: contain;
 }
 
 .nav {
