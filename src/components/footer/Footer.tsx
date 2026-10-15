@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
-import { fadeIn, fadeUp } from "@/components/motion/presets";
+import { fadeUp } from "@/components/motion/presets";
 import { OpenPositionsButton } from "@/components/careers/OpenPositionsButton";
 import { useTranslation } from "@/i18n/LocaleProvider";
+import { HOME_COPY } from "@/components/home/home-copy";
 import styles from "./Footer.module.css";
 
 const STORE_LINKS = [
@@ -12,7 +13,7 @@ const STORE_LINKS = [
     href: "#",
     label: "Download on the App Store",
     src: "/assets/badge-app-store.svg",
-    width: 135,
+    width: 120,
     height: 40,
   },
   {
@@ -24,32 +25,36 @@ const STORE_LINKS = [
   },
 ] as const;
 
-const BRAND_BLOCKS = [
-  { name: "Pideh", className: "colStart" },
-  { name: "Kamancha", className: "colMid" },
-] as const;
+const BRAND_BLOCKS = [{ name: "Kamancha" }, { name: "Pideh" }] as const;
 
 const SOCIAL_LINKS = [
   {
     href: "https://www.facebook.com/aregface",
     label: "Facebook",
     src: "/assets/social-facebook.svg",
-    width: 24,
-    height: 24,
+    width: 32,
+    height: 32,
   },
   {
     href: "https://www.instagram.com/restormania/",
     label: "Instagram",
     src: "/assets/social-instagram.svg",
-    width: 23,
-    height: 23,
+    width: 32,
+    height: 32,
   },
   {
-    href: "https://www.tiktok.com/@restormania",
-    label: "TikTok",
-    src: "/assets/social-tiktok.svg",
-    width: 42,
-    height: 42,
+    href: "https://t.me/restormania",
+    label: "Telegram",
+    src: "/assets/social-telegram.svg",
+    width: 32,
+    height: 32,
+  },
+  {
+    href: "https://wa.me/37441181718",
+    label: "WhatsApp",
+    src: "/assets/social-whatsapp.svg",
+    width: 32,
+    height: 32,
   },
 ] as const;
 
@@ -78,12 +83,13 @@ function StoreButtons({ brand }: { brand: string }) {
 }
 
 export function Footer() {
-  const { t } = useTranslation();
+  const { locale, t } = useTranslation();
+  const copy = HOME_COPY[locale];
 
   return (
     <footer className={styles.footer} id="contact">
       <RevealGroup className={styles.inner} as="div">
-        <Reveal className={styles.top} variants={fadeUp} child>
+        <Reveal className={styles.logoWrap} variants={fadeUp} child>
           <a className={styles.logo} href="#top" aria-label="Restormania">
             <Image
               className={styles.barBottom}
@@ -114,47 +120,33 @@ export function Footer() {
               height={238}
             />
           </a>
-
-          <div className={styles.columns}>
-            {BRAND_BLOCKS.map((brand) => (
-              <div
-                key={brand.name}
-                className={styles[brand.className]}
-              >
-                <h3 className={styles.colTitle}>{brand.name}</h3>
-                <StoreButtons brand={brand.name} />
-              </div>
-            ))}
-
-            <div className={styles.colEnd}>
-              <h3 className={styles.colTitle}>{t.footer.contact}</h3>
-              <div className={styles.contactInfo}>
-                <p>
-                  <a href="tel:+37441181718">+ 374 41 18 17 18</a>
-                </p>
-                <p>
-                  <a href="mailto:kamancharest@gmail.com">
-                    kamancharest@gmail.com
-                  </a>
-                </p>
-                <OpenPositionsButton className={styles.careersButton} />
-              </div>
-            </div>
-          </div>
         </Reveal>
 
-        <Reveal className={styles.social} variants={fadeIn} child>
-          {SOCIAL_LINKS.map((item) => {
-            const isExternal = item.href.startsWith("http");
-            return (
+        <Reveal className={styles.columns} variants={fadeUp} child>
+          <div className={styles.colStart}>
+            <h3 className={styles.colTitle}>{t.footer.contact}</h3>
+            <div className={styles.contactInfo}>
+              <p>{t.footer.address}</p>
+              <p>
+                <a href="tel:+37441181718">+ 374 41 18 17 18</a>
+              </p>
+              <p>
+                <a href="mailto:kamancharest@gmail.com">kamancharest@gmail.com</a>
+              </p>
+              <p>{copy.hours}</p>
+              <OpenPositionsButton className={styles.careersButton} />
+            </div>
+          </div>
+
+          <div className={styles.social}>
+            {SOCIAL_LINKS.map((item) => (
               <a
                 key={item.label}
                 className={styles.socialLink}
                 href={item.href}
                 aria-label={item.label}
-                {...(isExternal
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Image
                   className={styles.socialIcon}
@@ -164,18 +156,29 @@ export function Footer() {
                   height={item.height}
                 />
               </a>
-            );
-          })}
+            ))}
+          </div>
+
+          <div className={styles.colMid}>
+            {BRAND_BLOCKS.map((brand) => (
+              <div className={styles.brandBlock} key={brand.name}>
+                <h3 className={styles.colTitle}>{brand.name}</h3>
+                <StoreButtons brand={brand.name} />
+              </div>
+            ))}
+          </div>
         </Reveal>
 
         <Reveal as="p" className={styles.copyright} variants={fadeUp} child>
-          <span className={styles.copyrightMain}>{t.footer.copyright}</span>
+          <span className={styles.copyrightMain}>
+            © 2026 | All rights reserved
+          </span>
           <span className={styles.copyrightSep} aria-hidden="true">
             {" "}
             |{" "}
           </span>
           <span className={styles.copyrightCredit}>
-            {t.footer.createdBy}{" "}
+            Created by{" "}
             <a
               className={styles.credit}
               href="https://neetrino.com"
