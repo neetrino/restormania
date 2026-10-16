@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { Reveal } from "@/components/motion/Reveal";
+import { fadeScale, fadeUp, slideFromRight } from "@/components/motion/presets";
 import { PillLink } from "@/components/ui/PillLink";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import { emphasizeNames, HOME_COPY } from "./home-copy";
@@ -13,7 +15,7 @@ export function IntroSection() {
   return (
     <section className={styles.intro} id="top" aria-labelledby="intro-title">
       <div className={styles.heroStack}>
-      <div className={styles.wordmark}>
+      <Reveal className={styles.wordmark} variants={fadeUp}>
         <Image
           className={styles.barTop}
           src="/assets/home/hero/bar-top.svg"
@@ -38,8 +40,8 @@ export function IntroSection() {
           height={267}
           priority
         />
-      </div>
-      <figure className={styles.portrait}>
+      </Reveal>
+      <Reveal as="figure" className={styles.portrait} variants={fadeScale}>
         <Image
           className={styles.photo}
           src="/assets/home/founder-portrait.jpg"
@@ -48,16 +50,16 @@ export function IntroSection() {
           sizes="(max-width: 743px) 100vw, 650px"
           priority
         />
-      </figure>
+      </Reveal>
       </div>
-      <p className={styles.lead}>
+      <Reveal as="p" className={styles.lead} variants={slideFromRight}>
         <strong>Restormania</strong>
         {copy.leadRest}
-      </p>
+      </Reveal>
       <PillLink href="#projects" variant="kamancha" size="md" className={styles.more}>
         {t.brands.more}
       </PillLink>
-      <div className={styles.bio} id="intro-title">
+      <Reveal className={styles.bio} id="intro-title" variants={fadeUp}>
         {t.founder.bio.split(/\n\n+/).map((paragraph) => (
           <p key={paragraph.slice(0, 24)}>
             {emphasizeNames(paragraph).map((part, index) =>
@@ -69,7 +71,7 @@ export function IntroSection() {
             )}
           </p>
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 }
