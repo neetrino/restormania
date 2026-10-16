@@ -58,13 +58,17 @@ export function IntroSection() {
         {t.brands.more}
       </PillLink>
       <div className={styles.bio} id="intro-title">
-        {emphasizeNames(t.founder.bio).map((part, index) =>
-          part.bold ? (
-            <strong key={`${part.text}-${index}`}>{part.text}</strong>
-          ) : (
-            <span key={`${index}-${part.text.slice(0, 12)}`}>{part.text}</span>
-          ),
-        )}
+        {t.founder.bio.split(/\n\n+/).map((paragraph) => (
+          <p key={paragraph.slice(0, 24)}>
+            {emphasizeNames(paragraph).map((part, index) =>
+              part.bold ? (
+                <strong key={`${part.text}-${index}`}>{part.text}</strong>
+              ) : (
+                <span key={`${index}-${part.text.slice(0, 12)}`}>{part.text}</span>
+              ),
+            )}
+          </p>
+        ))}
       </div>
     </section>
   );
