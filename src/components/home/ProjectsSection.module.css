@@ -79,7 +79,7 @@
   display: contents;
 }
 
-.mobileStory {
+.mobileCaption {
   display: none;
 }
 
@@ -380,7 +380,7 @@
 
   .heading {
     grid-template-columns: 1fr;
-    margin: 0 22px 20px;
+    margin: 0 22px 40px;
   }
 
   .title {
@@ -410,32 +410,13 @@
     display: none;
   }
 
-  .mobileStory {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin: 0 22px 20px;
-  }
-
-  .mobileStory p {
-    margin: 0;
-    font-family: var(--font-ui);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    color: var(--color-black);
-  }
-
-  .mobileMore {
-    width: 100%;
-    max-width: 358px;
-  }
-
   .cardsRail {
     display: flex;
-    gap: 13px;
+    gap: 16px;
     overflow-x: auto;
     padding: 0 22px 8px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 22px;
     scrollbar-width: none;
   }
 
@@ -452,21 +433,44 @@
   .saryan,
   .factory,
   .pideh {
-    flex: 0 0 358px;
-    width: 358px;
-    height: 253px;
-    min-height: 253px;
+    display: flex;
+    flex: 0 0 calc(100vw - 44px);
+    flex-direction: column;
+    gap: 12px;
+    width: calc(100vw - 44px);
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .mobileCaption {
+    display: block;
+    margin: 0;
+    color: var(--color-black);
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
   }
 
   .tumanyan {
-    border-width: 5px;
+    border-width: 0;
   }
 
   .cover {
-    top: 0;
-    left: 0;
+    position: relative;
+    top: auto;
+    left: auto;
     width: 100%;
-    height: 100%;
+    height: 253px;
+    border: 5px solid var(--color-black);
+    border-radius: 20px;
+    object-fit: cover;
   }
 
   .tumanyan:hover .cover,
@@ -487,24 +491,36 @@
   }
 
   .saryanArt {
-    top: 0;
-    height: 100%;
+    position: relative;
+    top: auto;
+    height: 253px;
+    border-radius: 20px;
     object-position: center;
   }
 
   .factoryMedia,
   .pidehMedia {
-    top: 0;
+    position: relative;
+    top: auto;
     left: 0;
     right: auto;
     width: 100%;
-    height: 100%;
+    height: 253px;
+    overflow: hidden;
+    border-radius: 20px;
     opacity: 1;
+  }
+
+  .factoryMedia {
+    border: 7px solid var(--color-black);
+    border-radius: 28px;
+    background: var(--color-kamancha);
   }
 
   .factoryPhoto {
     object-fit: cover;
     object-position: center;
+    transform: none;
   }
 
   .pidehSpin {

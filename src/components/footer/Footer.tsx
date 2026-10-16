@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { Reveal, RevealGroup } from "@/components/motion/Reveal";
 import { fadeUp } from "@/components/motion/presets";
 import { OpenPositionsButton } from "@/components/careers/OpenPositionsButton";
@@ -26,6 +27,30 @@ const STORE_LINKS = [
 ] as const;
 
 const BRAND_BLOCKS = [{ name: "Kamancha" }, { name: "Pideh" }] as const;
+
+const CONTACT_ICONS = {
+  pin: "M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11zM12 12.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z",
+  phone: "M7 4h3l1 4-2 1a11 11 0 0 0 6 6l1-2 4 1v3a2 2 0 0 1-2 2A15 15 0 0 1 5 6a2 2 0 0 1 2-2z",
+  mail: "M4 7h16v10H4V7zm0 0 8 6 8-6",
+  clock: "M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z",
+} as const;
+
+function ContactLine({
+  icon,
+  children,
+}: {
+  icon: keyof typeof CONTACT_ICONS;
+  children: ReactNode;
+}) {
+  return (
+    <p className={styles.contactLine}>
+      <svg className={styles.contactIcon} viewBox="0 0 24 24" aria-hidden="true">
+        <path d={CONTACT_ICONS[icon]} />
+      </svg>
+      <span>{children}</span>
+    </p>
+  );
+}
 
 const SOCIAL_LINKS = [
   {
@@ -126,14 +151,14 @@ export function Footer() {
           <div className={styles.colStart}>
             <h3 className={styles.colTitle}>{t.footer.contact}</h3>
             <div className={styles.contactInfo}>
-              <p>{t.footer.address}</p>
-              <p>
+              <ContactLine icon="pin">{t.footer.address}</ContactLine>
+              <ContactLine icon="phone">
                 <a href="tel:+37441181718">+ 374 41 18 17 18</a>
-              </p>
-              <p>
+              </ContactLine>
+              <ContactLine icon="mail">
                 <a href="mailto:kamancharest@gmail.com">kamancharest@gmail.com</a>
-              </p>
-              <p>{copy.hours}</p>
+              </ContactLine>
+              <ContactLine icon="clock">{copy.hours}</ContactLine>
               <OpenPositionsButton className={styles.careersButton} />
             </div>
           </div>

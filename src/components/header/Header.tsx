@@ -115,29 +115,35 @@ export function Header() {
             aria-label="Menu"
             onClick={() => setMenuOpen((open) => !open)}
           >
-            <Image src="/assets/home/header/menu.svg" alt="" width={41} height={41} />
+            <span className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ""}`} aria-hidden>
+              <span />
+              <span />
+              <span />
+            </span>
           </button>
         </div>
         {menuOpen ? (
           <nav className={styles.mobileNav} id="mobile-nav" onClick={() => setMenuOpen(false)}>
-            <PillLink
-              href="#news"
-              variant="solid"
-              size="sm"
-              className={`${styles.navPill} ${styles.projectsPill}`}
-            >
-              {t.nav.ourProjects}
-            </PillLink>
-            <PillLink
-              href={KAMANCHA_URL}
-              variant="solid"
-              size="sm"
-              className={`${styles.navPill} ${styles.kamanchaScrolled}`}
-            >
-              {t.nav.kamancha}
-            </PillLink>
+            <div className={styles.mobileNavRow}>
+              <PillLink
+                href="#news"
+                variant="solid"
+                size="sm"
+                className={`${styles.navPill} ${styles.projectsPill}`}
+              >
+                {t.nav.ourProjects}
+              </PillLink>
+              <PillLink
+                href={KAMANCHA_URL}
+                variant="solid"
+                size="sm"
+                className={`${styles.navPill} ${styles.kamanchaScrolled}`}
+              >
+                {t.nav.kamancha}
+              </PillLink>
+            </div>
             <div onClick={(event) => event.stopPropagation()}>
-              <LanguageSwitcher />
+              <LanguageSwitcher variant="segments" />
             </div>
           </nav>
         ) : null}

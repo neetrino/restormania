@@ -161,12 +161,13 @@
   }
 
   .shell {
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 82px;
     min-height: 82px;
     margin: 0;
-    padding: 9px 17px 0 17px;
+    padding: 0 17px;
     border-radius: 0;
     background: transparent;
     box-shadow: none;
@@ -195,7 +196,7 @@
     justify-content: center;
     width: 56px;
     height: 56px;
-    margin-top: 8px;
+    margin-top: 0;
     padding: 0;
     border: 0;
     border-radius: 40px;
@@ -203,10 +204,57 @@
     cursor: pointer;
   }
 
-  .menuButton img {
-    width: 41px;
-    height: 41px;
-    max-width: none;
+  .burger {
+    position: relative;
+    display: block;
+    width: 26px;
+    height: 20px;
+  }
+
+  .burger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+    border-radius: 2px;
+    background: #fecf0a;
+    transform-origin: center;
+    transition:
+      transform 0.28s ease,
+      opacity 0.2s ease,
+      top 0.28s ease;
+  }
+
+  .burger span:nth-child(1) {
+    top: 0;
+  }
+
+  .burger span:nth-child(2) {
+    top: 8.75px;
+  }
+
+  .burger span:nth-child(3) {
+    top: 17.5px;
+  }
+
+  .burgerOpen span:nth-child(1) {
+    top: 8.75px;
+    transform: rotate(45deg);
+  }
+
+  .burgerOpen span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burgerOpen span:nth-child(3) {
+    top: 8.75px;
+    transform: rotate(-45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .burger span {
+      transition: none;
+    }
   }
 
   .mobileNav {
@@ -216,5 +264,16 @@
     gap: 12px;
     padding: 16px 17px 20px;
     background: var(--color-yellow);
+  }
+
+  .mobileNavRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mobileNavRow .navPill {
+    flex: 1;
+    min-width: 0;
   }
 }

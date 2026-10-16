@@ -30,12 +30,6 @@ export function ProjectsSection() {
         </h2>
         <p className={styles.note}>{copy.projectsNote}</p>
       </header>
-      <div className={styles.mobileStory}>
-        <p>{copy.tumanyanBody}</p>
-        <PillLink href={KAMANCHA_URL} variant="kamancha" size="md" className={styles.mobileMore}>
-          {t.brands.more}
-        </PillLink>
-      </div>
       <div className={styles.cardsRail}>
         <div className={styles.rowEqual}>
           <TumanyanCard copy={copy} more={t.brands.more} />
@@ -67,6 +61,7 @@ function TumanyanCard({ copy, more }: { copy: HomeCopy; more: string }) {
           {more}
         </PillLink>
       </div>
+      <p className={styles.mobileCaption}>{copy.tumanyanBody}</p>
     </article>
   );
 }
@@ -88,6 +83,7 @@ function SaryanCard({ copy, more }: { copy: HomeCopy; more: string }) {
         width={650}
         height={253}
       />
+      <p className={styles.mobileCaption}>{copy.saryanBody}</p>
     </article>
   );
 }
@@ -115,6 +111,7 @@ function FactoryCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={KAMANCHA_URL} variant="solid" size="md" className={styles.cardCta}>
         {more}
       </PillLink>
+      <p className={styles.mobileCaption}>{copy.factoryBody}</p>
     </article>
   );
 }
@@ -138,6 +135,7 @@ function PidehCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={PIDEH_URL} variant="solid" size="md" className={styles.cardCta}>
         {more}
       </PillLink>
+      <p className={styles.mobileCaption}>{copy.pidehBody}</p>
     </article>
   );
 }

@@ -37,7 +37,11 @@ function GlobeIcon() {
   );
 }
 
-export function LanguageSwitcher() {
+type LanguageSwitcherProps = {
+  variant?: "menu" | "segments";
+};
+
+export function LanguageSwitcher({ variant = "menu" }: LanguageSwitcherProps) {
   const { locale, setLocale, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -68,6 +72,24 @@ export function LanguageSwitcher() {
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [open]);
+
+  if (variant === "segments") {
+    return (
+      <div className={styles.segments} role="group" aria-label={t.language}>
+        {LOCALES.map((code) => (
+          <button
+            key={code}
+            type="button"
+            className={`${styles.segment} ${code === locale ? styles.segmentActive : ""}`}
+            aria-pressed={code === locale}
+            onClick={() => setLocale(code)}
+          >
+            {LOCALE_LABELS[code]}
+          </button>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className={styles.switcher} ref={rootRef}>
