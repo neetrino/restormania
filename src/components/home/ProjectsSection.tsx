@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { Reveal } from "@/components/motion/Reveal";
+import { fadeUp, slideFromLeft, slideFromRight } from "@/components/motion/presets";
 import { PillLink } from "@/components/ui/PillLink";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import { KAMANCHA_URL, PIDEH_URL } from "@/lib/brand-links";
@@ -13,7 +15,7 @@ export function ProjectsSection() {
 
   return (
     <section className={styles.section} id="projects" aria-labelledby="projects-title">
-      <header className={styles.heading}>
+      <Reveal as="header" className={styles.heading} variants={fadeUp}>
         <h2 className={styles.title} id="projects-title">
           <span className={styles.titleLine}>{copy.projectsLead}</span>
           {locale === "hy" ? (
@@ -29,7 +31,7 @@ export function ProjectsSection() {
           )}
         </h2>
         <p className={styles.note}>{copy.projectsNote}</p>
-      </header>
+      </Reveal>
       <div className={styles.cardsRail}>
         <div className={styles.rowEqual}>
           <TumanyanCard copy={copy} more={t.brands.more} />
@@ -46,7 +48,7 @@ export function ProjectsSection() {
 
 function TumanyanCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
-    <article className={styles.tumanyan}>
+    <Reveal as="article" className={styles.tumanyan} variants={slideFromLeft}>
       <div className={styles.photoFrame}>
         <Image
           className={styles.cover}
@@ -68,13 +70,13 @@ function TumanyanCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={KAMANCHA_URL} variant="solid" size="md" className={styles.mobileCta}>
         {more}
       </PillLink>
-    </article>
+    </Reveal>
   );
 }
 
 function SaryanCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
-    <article className={styles.saryan}>
+    <Reveal as="article" className={styles.saryan} variants={slideFromRight}>
       <div className={styles.saryanCopy}>
         <h3 className={styles.cardTitle}>{copy.saryanTitle}</h3>
         <p>{copy.saryanBody}</p>
@@ -96,13 +98,13 @@ function SaryanCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={KAMANCHA_URL} variant="solid" size="md" className={styles.mobileCta}>
         {more}
       </PillLink>
-    </article>
+    </Reveal>
   );
 }
 
 function FactoryCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
-    <article className={styles.factory}>
+    <Reveal as="article" className={styles.factory} variants={slideFromLeft}>
       <div className={styles.factoryCopy}>
         <h3 className={`${styles.cardTitle} ${styles.lightTitle}`}>{copy.factoryTitle}</h3>
         <p>{copy.factoryBody}</p>
@@ -128,13 +130,13 @@ function FactoryCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={KAMANCHA_URL} variant="solid" size="md" className={styles.mobileCta}>
         {more}
       </PillLink>
-    </article>
+    </Reveal>
   );
 }
 
 function PidehCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
-    <article className={styles.pideh}>
+    <Reveal as="article" className={styles.pideh} variants={slideFromRight}>
       <div className={styles.pidehMedia}>
         <div className={styles.pidehSpin}>
           <Image
@@ -156,6 +158,6 @@ function PidehCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={PIDEH_URL} variant="solid" size="md" className={styles.mobileCta}>
         {more}
       </PillLink>
-    </article>
+    </Reveal>
   );
 }

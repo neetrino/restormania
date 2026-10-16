@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { Reveal } from "@/components/motion/Reveal";
+import { fadeUp } from "@/components/motion/presets";
 import { PillLink } from "@/components/ui/PillLink";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import { HOME_COPY } from "./home-copy";
@@ -26,7 +28,7 @@ export function NewsSection() {
 
   return (
     <section className={styles.section} id="news" aria-labelledby="news-title">
-      <div className={styles.heading}>
+      <Reveal className={styles.heading} variants={fadeUp}>
         <h2 className={styles.title} id="news-title">
           {copy.newsTitle}
         </h2>
@@ -48,8 +50,8 @@ export function NewsSection() {
             <Image src="/assets/home/arrow-next.svg" alt="" width={56} height={56} />
           </button>
         </div>
-      </div>
-      <div className={styles.scroller} ref={scroller}>
+      </Reveal>
+      <Reveal className={styles.scroller} variants={fadeUp} ref={scroller}>
         {Array.from({ length: CARD_COUNT }, (_, index) => (
           <article className={styles.card} key={index}>
             <div className={styles.photoWrap}>
@@ -70,7 +72,7 @@ export function NewsSection() {
             </div>
           </article>
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 }
