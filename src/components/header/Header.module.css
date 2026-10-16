@@ -276,4 +276,8 @@
     flex: 1;
     min-width: 0;
   }
+
+  .mobileNavRow .navPill:last-of-type {
+    flex: 0 1 auto;
+  }
 }

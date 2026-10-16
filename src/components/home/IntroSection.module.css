@@ -113,7 +113,7 @@
 @media (max-width: 743px) {
   .intro {
     grid-template-columns: 1fr;
-    padding: 8px 22px 40px;
+    padding: 0 22px 40px;
     row-gap: 18px;
   }
 

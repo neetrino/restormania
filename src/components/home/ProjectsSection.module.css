@@ -84,7 +84,8 @@
 }
 
 .mobileCaption,
-.mobileCta {
+.mobileCta,
+.mobilePill {
   display: none;
 }
 
@@ -380,12 +381,12 @@
 
 @media (max-width: 743px) {
   .section {
-    padding: 8px 0 40px;
+    padding: 28px 0 40px;
   }
 
   .heading {
     grid-template-columns: 1fr;
-    margin: 0 22px 40px;
+    margin: 0 22px 60px;
   }
 
   .title {
@@ -419,9 +420,9 @@
     display: flex;
     gap: 16px;
     overflow-x: auto;
-    padding: 0 22px 8px;
+    padding: 0 34px 8px;
     scroll-snap-type: x mandatory;
-    scroll-padding-inline: 22px;
+    scroll-padding-inline: 0;
     scrollbar-width: none;
   }
 
@@ -439,34 +440,30 @@
   .factory,
   .pideh {
     display: flex;
-    flex: 0 0 calc(100vw - 44px);
+    flex: 0 0 calc(100vw - 68px);
     flex-direction: column;
     gap: 12px;
-    width: calc(100vw - 44px);
+    width: calc(100vw - 68px);
     height: auto;
     min-height: 0;
     overflow: visible;
     border: 0;
     border-radius: 0;
     background: transparent;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     scroll-snap-stop: always;
   }
 
   .mobileCaption {
-    display: block;
+    display: flex;
+    flex: 1;
+    align-items: center;
     margin: 0;
     color: var(--color-black);
     font-family: var(--font-ui);
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-  }
-
-  .mobileTitle {
-    display: block;
-    margin-bottom: 4px;
-    font-weight: 700;
   }
 
   .photoFrame {
@@ -479,12 +476,32 @@
     position: relative;
   }
 
-  .mobileCta {
+  .mobilePill {
     position: absolute;
-    right: 14px;
-    bottom: 14px;
+    top: 12px;
+    right: 12px;
+    left: auto;
     z-index: 2;
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: calc(100% - 24px);
+    height: 38px;
+    padding: 0 16px;
+    border-radius: 40px;
+    background: var(--color-white);
+    color: var(--color-kamancha);
+    font-family: var(--font-card-title);
+    font-size: 15px;
+    line-height: 18px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .mobileCta {
+    display: flex;
+    width: 100%;
+    height: 56px;
     background: var(--color-white);
     color: var(--color-black);
   }

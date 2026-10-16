@@ -141,9 +141,9 @@ export function Header() {
               >
                 {t.nav.kamancha}
               </PillLink>
-            </div>
-            <div onClick={(event) => event.stopPropagation()}>
-              <LanguageSwitcher variant="segments" />
+              <div onClick={(event) => event.stopPropagation()}>
+                <LanguageSwitcher />
+              </div>
             </div>
           </nav>
         ) : null}
