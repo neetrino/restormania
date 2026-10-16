@@ -86,20 +86,20 @@ export function Header() {
             </a>
             <div className={styles.brandActions}>
               <PillLink
-                href={KAMANCHA_URL}
-                variant="solid"
-                size="sm"
-                className={`${styles.navPill} ${scrolled ? styles.kamanchaScrolled : ""}`}
-              >
-                {t.nav.kamancha}
-              </PillLink>
-              <PillLink
                 href="#projects"
                 variant="solid"
                 size="sm"
                 className={`${styles.navPill} ${styles.projectsPill}`}
               >
                 {t.nav.ourProjects}
+              </PillLink>
+              <PillLink
+                href={KAMANCHA_URL}
+                variant="solid"
+                size="sm"
+                className={`${styles.navPill} ${scrolled ? styles.kamanchaScrolled : ""}`}
+              >
+                {t.nav.kamancha}
               </PillLink>
             </div>
           </div>

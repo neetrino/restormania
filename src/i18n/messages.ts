@@ -65,7 +65,7 @@ export const messages: Record<Locale, Messages> = {
       projects: "Նախագծեր",
       main: "Հիմնական",
       kamancha: "Քամանչա",
-      ourProjects: "Մեր նախագծերը",
+      ourProjects: "Restormania Blog",
     },
     hero: {
       subtitle: "Երկու վայր, մեկ պատմություն",
@@ -125,7 +125,7 @@ export const messages: Record<Locale, Messages> = {
       projects: "Projects",
       main: "Main",
       kamancha: "Kamancha",
-      ourProjects: "Our projects",
+      ourProjects: "Restormania Blog",
     },
     hero: {
       subtitle: "Two places, one story",
@@ -185,7 +185,7 @@ export const messages: Record<Locale, Messages> = {
       projects: "Проекты",
       main: "Основная",
       kamancha: "Каманча",
-      ourProjects: "Наши проекты",
+      ourProjects: "Restormania Blog",
     },
     hero: {
       subtitle: "Два места, одна история",
