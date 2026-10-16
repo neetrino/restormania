@@ -87,7 +87,7 @@ export function Header() {
             </a>
             <div className={styles.brandActions}>
               <PillLink
-                href="#news"
+                href="#projects"
                 variant="solid"
                 size="sm"
                 className={`${styles.navPill} ${styles.projectsPill}`}
