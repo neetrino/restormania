@@ -75,6 +75,14 @@
   margin-bottom: 26px;
 }
 
+.cardsRail {
+  display: contents;
+}
+
+.mobileStory {
+  display: none;
+}
+
 .rowSplit {
   grid-template-columns: 821px 472px;
   justify-content: space-between;
@@ -367,50 +375,91 @@
 
 @media (max-width: 743px) {
   .section {
-    padding: 8px 16px 48px;
+    padding: 8px 0 40px;
   }
 
-  .heading,
-  .rowEqual,
-  .rowSplit {
+  .heading {
     grid-template-columns: 1fr;
+    margin: 0 22px 20px;
   }
 
   .title {
-    font-size: 42px;
-    line-height: 1;
-    letter-spacing: 1px;
+    font-size: 51px;
+    line-height: 40px;
+    letter-spacing: 1.53px;
   }
 
   .titleLine {
     height: auto;
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .badge {
-    width: min(100%, 320px);
-    height: auto;
-    margin: 0 0 8px;
+    width: 308px;
+    height: 44px;
+    margin: 8px 0 0;
   }
 
   .badgeText {
-    margin: 0 0 8px;
-    font-size: 42px;
+    margin: 8px 0 0;
+    font-size: 36px;
     line-height: 1;
   }
 
   .note {
-    width: auto;
-    margin-top: 16px;
-    text-align: left;
+    display: none;
+  }
+
+  .mobileStory {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 22px 20px;
+  }
+
+  .mobileStory p {
+    margin: 0;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--color-black);
+  }
+
+  .mobileMore {
+    width: 100%;
+    max-width: 358px;
+  }
+
+  .cardsRail {
+    display: flex;
+    gap: 13px;
+    overflow-x: auto;
+    padding: 0 22px 8px;
+    scrollbar-width: none;
+  }
+
+  .cardsRail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rowEqual,
+  .rowSplit {
+    display: contents;
   }
 
   .tumanyan,
   .saryan,
   .factory,
   .pideh {
-    height: auto;
-    min-height: 320px;
+    flex: 0 0 358px;
+    width: 358px;
+    height: 253px;
+    min-height: 253px;
+  }
+
+  .tumanyan {
+    border-width: 5px;
   }
 
   .cover {
@@ -425,87 +474,37 @@
     left: 0;
   }
 
-  .tumanyan {
-    height: 280px;
-    min-height: 0;
-  }
-
-  .tumanyanPanel {
-    top: 0;
-    left: 0;
-    width: min(78%, 280px);
-    height: 100%;
-    transform: translateX(-105%);
-  }
-
-  .tumanyanPanel p {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: auto;
-    margin: 24px 20px 16px;
-  }
-
-  .tumanyanCta {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: 0 20px 20px;
-  }
-
-  .saryan .darkPill,
-  .placePill {
-    position: static;
-    width: auto;
-    margin: 16px;
-  }
-
+  .tumanyanPanel,
+  .placePill,
   .saryanCopy,
-  .factory .cardTitle,
-  .factoryCopy p,
+  .saryan .darkPill,
+  .factoryCopy,
   .pideh .cardTitle,
   .pidehBody,
-  .phone {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: auto;
-    margin: 0 16px 12px;
+  .factory .cardCta,
+  .pideh .cardCta {
+    display: none;
   }
 
   .saryanArt {
-    position: relative;
-    top: auto;
-    height: 180px;
-  }
-
-  .saryan {
-    padding-top: 16px;
-  }
-
-  .factory .cardCta,
-  .pideh .cardCta {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    margin: 16px;
+    top: 0;
+    height: 100%;
+    object-position: center;
   }
 
   .factoryMedia,
   .pidehMedia {
     top: 0;
-    left: auto;
-    right: 0;
-    width: 48%;
+    left: 0;
+    right: auto;
+    width: 100%;
     height: 100%;
-    opacity: 0.28;
+    opacity: 1;
   }
 
   .factoryPhoto {
     object-fit: cover;
-    object-position: bottom center;
+    object-position: center;
   }
 
   .pidehSpin {

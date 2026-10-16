@@ -118,6 +118,11 @@
   color: var(--color-white);
 }
 
+.menuButton,
+.mobileNav {
+  display: none;
+}
+
 /* iPad / tablet: always the full desktop navbar */
 @media (min-width: 744px) {
   .header {
@@ -145,37 +150,71 @@
 /* Phones only */
 @media (max-width: 743px) {
   .header {
-    padding: 12px 16px 0;
+    padding: 0;
+    background: var(--color-yellow);
   }
 
-  .nav {
+  .nav,
+  .brandActions,
+  .actions {
     display: none;
   }
 
   .shell {
-    height: auto;
-    min-height: 72px;
-    padding: 8px 56px 10px 12px;
+    justify-content: space-between;
+    width: 100%;
+    height: 82px;
+    min-height: 82px;
+    margin: 0;
+    padding: 9px 17px 0 17px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .shellScrolled {
+    margin-top: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .center {
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .brandActions {
-    display: flex;
-    gap: 8px;
+    gap: 0;
+    justify-content: flex-start;
   }
 
   .logo {
-    width: 64px;
-    height: 52px;
+    width: 82px;
+    height: 66px;
   }
 
-  .actions {
-    top: 10px;
-    right: 12px;
+  .menuButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 40px;
+    background: var(--color-black);
+    cursor: pointer;
+  }
+
+  .menuButton img {
+    width: 41px;
+    height: 41px;
+    max-width: none;
+  }
+
+  .mobileNav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px 17px 20px;
+    background: var(--color-yellow);
   }
 }

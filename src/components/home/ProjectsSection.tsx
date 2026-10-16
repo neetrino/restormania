@@ -30,13 +30,21 @@ export function ProjectsSection() {
         </h2>
         <p className={styles.note}>{copy.projectsNote}</p>
       </header>
-      <div className={styles.rowEqual}>
-        <TumanyanCard copy={copy} more={t.brands.more} />
-        <SaryanCard copy={copy} more={t.brands.more} />
+      <div className={styles.mobileStory}>
+        <p>{copy.tumanyanBody}</p>
+        <PillLink href={KAMANCHA_URL} variant="kamancha" size="md" className={styles.mobileMore}>
+          {t.brands.more}
+        </PillLink>
       </div>
-      <div className={styles.rowSplit}>
-        <FactoryCard copy={copy} more={t.brands.more} />
-        <PidehCard copy={copy} more={t.brands.more} />
+      <div className={styles.cardsRail}>
+        <div className={styles.rowEqual}>
+          <TumanyanCard copy={copy} more={t.brands.more} />
+          <SaryanCard copy={copy} more={t.brands.more} />
+        </div>
+        <div className={styles.rowSplit}>
+          <FactoryCard copy={copy} more={t.brands.more} />
+          <PidehCard copy={copy} more={t.brands.more} />
+        </div>
       </div>
     </section>
   );

@@ -94,39 +94,64 @@
   object-position: center 18%;
 }
 
+.heroStack {
+  display: contents;
+}
+
+.more {
+  display: none;
+}
+
 @media (max-width: 743px) {
   .intro {
     grid-template-columns: 1fr;
-    padding: 0 16px 48px;
-    row-gap: 20px;
+    padding: 8px 22px 40px;
+    row-gap: 18px;
+  }
+
+  .heroStack {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 250px;
+    margin-bottom: 4px;
   }
 
   .wordmark {
-    width: min(100%, 320px);
-    height: auto;
-    aspect-ratio: 662 / 512;
-    margin-top: 0;
-    margin-left: 0;
+    position: absolute;
+    z-index: 2;
+    top: 36px;
+    left: 0;
+    width: 230px;
+    height: 178px;
+    margin: 0;
   }
 
   .lead {
     width: auto;
+    max-width: 358px;
     margin-top: 0;
     order: 2;
   }
 
-  .portrait {
+  .more {
+    display: inline-flex;
     order: 3;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 648 / 455;
-    margin-top: 0;
+    width: 163px;
+    height: 56px;
+  }
+
+  .portrait {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(356px, 88%);
+    height: 250px;
+    margin: 0;
+    border-width: 5px;
   }
 
   .bio {
-    order: 4;
-    font-size: 15px;
-    line-height: 22px;
-    text-align: left;
+    display: none;
   }
 }
