@@ -155,6 +155,7 @@
 /* Phones only */
 @media (max-width: 743px) {
   .header {
+    top: 0;
     padding: 0;
     background: var(--color-yellow);
   }
