@@ -41,7 +41,7 @@ const hy: HomeCopy = {
   factoryBody:
     "Քամանչայի առաքման առանձին բաժինն է, որը ստեղծվել է մեր հյուրերի բարձր պահանջարկը բավարարելու և սիրելի ուտեստներն ավելի հասանելի դարձնելու նպատակով։ Առաքումն իրականացվում է Երևանի ողջ տարածքում՝ ամեն օր՝ 10։00–00։00։",
   factoryPhone: "095 711 771",
-  pidehTitle: "pideh",
+  pidehTitle: "Pideh",
   pidehBody:
     "Restormania-ի առանձնահատկություններից մեկը բիզնեսի իրական գործընթացների հնարավորինս բաց ներկայացումն է։",
   newsTitle: "Հետևեք մեր նորություններին",
@@ -77,7 +77,7 @@ const en: HomeCopy = {
   factoryBody:
     "Kamancha’s delivery arm, built for guests who want the same dishes at home. Delivery covers Yerevan every day, 10:00–00:00.",
   factoryPhone: "095 711 771",
-  pidehTitle: "pideh",
+  pidehTitle: "Pideh",
   pidehBody:
     "One thing that sets Restormania apart is how openly it shows the real work of the business.",
   newsTitle: "Follow our news",
@@ -113,7 +113,7 @@ const ru: HomeCopy = {
   factoryBody:
     "Отдельное направление доставки Каманчи: любимые блюда по всему Еревану, каждый день с 10:00 до 00:00.",
   factoryPhone: "095 711 771",
-  pidehTitle: "pideh",
+  pidehTitle: "Pideh",
   pidehBody:
     "Особенность Restormania — максимально открытый рассказ о реальных процессах бизнеса.",
   newsTitle: "Следите за нашими новостями",

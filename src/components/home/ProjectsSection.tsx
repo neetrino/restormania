@@ -47,13 +47,18 @@ export function ProjectsSection() {
 function TumanyanCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
     <article className={styles.tumanyan}>
-      <Image
-        className={styles.cover}
-        src="/assets/home/tumanyan.png"
-        alt=""
-        width={640}
-        height={716}
-      />
+      <div className={styles.photoFrame}>
+        <Image
+          className={styles.cover}
+          src="/assets/home/tumanyan.png"
+          alt=""
+          width={640}
+          height={716}
+        />
+        <PillLink href={KAMANCHA_URL} variant="solid" size="sm" className={styles.mobileCta}>
+          {more}
+        </PillLink>
+      </div>
       <span className={styles.placePill}>{copy.tumanyan}</span>
       <div className={styles.tumanyanPanel}>
         <p>{copy.tumanyanBody}</p>
@@ -61,7 +66,10 @@ function TumanyanCard({ copy, more }: { copy: HomeCopy; more: string }) {
           {more}
         </PillLink>
       </div>
-      <p className={styles.mobileCaption}>{copy.tumanyanBody}</p>
+      <p className={styles.mobileCaption}>
+        <strong className={styles.mobileTitle}>{copy.tumanyan}</strong>
+        {copy.tumanyanBody}
+      </p>
     </article>
   );
 }
@@ -76,14 +84,22 @@ function SaryanCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={KAMANCHA_URL} variant="kamancha" size="md" className={styles.darkPill}>
         {more}
       </PillLink>
-      <Image
-        className={styles.saryanArt}
-        src="/assets/home/saryan.png"
-        alt=""
-        width={650}
-        height={253}
-      />
-      <p className={styles.mobileCaption}>{copy.saryanBody}</p>
+      <div className={styles.photoFrame}>
+        <Image
+          className={styles.saryanArt}
+          src="/assets/home/saryan.png"
+          alt=""
+          width={650}
+          height={253}
+        />
+        <PillLink href={KAMANCHA_URL} variant="solid" size="sm" className={styles.mobileCta}>
+          {more}
+        </PillLink>
+      </div>
+      <p className={styles.mobileCaption}>
+        <strong className={styles.mobileTitle}>{copy.saryanTitle}</strong>
+        {copy.saryanBody}
+      </p>
     </article>
   );
 }
@@ -107,11 +123,17 @@ function FactoryCard({ copy, more }: { copy: HomeCopy; more: string }) {
           fill
           sizes="(max-width: 743px) 100vw, 420px"
         />
+        <PillLink href={KAMANCHA_URL} variant="solid" size="sm" className={styles.mobileCta}>
+          {more}
+        </PillLink>
       </div>
       <PillLink href={KAMANCHA_URL} variant="solid" size="md" className={styles.cardCta}>
         {more}
       </PillLink>
-      <p className={styles.mobileCaption}>{copy.factoryBody}</p>
+      <p className={styles.mobileCaption}>
+        <strong className={styles.mobileTitle}>{copy.factoryTitle}</strong>
+        {copy.factoryBody}
+      </p>
     </article>
   );
 }
@@ -129,13 +151,19 @@ function PidehCard({ copy, more }: { copy: HomeCopy; more: string }) {
             sizes="483px"
           />
         </div>
+        <PillLink href={PIDEH_URL} variant="solid" size="sm" className={styles.mobileCta}>
+          {more}
+        </PillLink>
       </div>
       <h3 className={`${styles.cardTitle} ${styles.lightTitle}`}>{copy.pidehTitle}</h3>
       <p className={styles.pidehBody}>{copy.pidehBody}</p>
       <PillLink href={PIDEH_URL} variant="solid" size="md" className={styles.cardCta}>
         {more}
       </PillLink>
-      <p className={styles.mobileCaption}>{copy.pidehBody}</p>
+      <p className={styles.mobileCaption}>
+        <strong className={styles.mobileTitle}>{copy.pidehTitle}</strong>
+        {copy.pidehBody}
+      </p>
     </article>
   );
 }
