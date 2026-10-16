@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState, type MouseEvent } from "react";
-import { PillLink } from "@/components/ui/PillLink";
 import { easeOutExpo } from "@/components/motion/presets";
-import { KAMANCHA_URL, PIDEH_URL } from "@/lib/brand-links";
+import { PillLink } from "@/components/ui/PillLink";
 import { useTranslation } from "@/i18n/LocaleProvider";
+import { KAMANCHA_URL } from "@/lib/brand-links";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import styles from "./Header.module.css";
 
@@ -18,25 +18,15 @@ function scrollToPageTop(event: MouseEvent<HTMLAnchorElement>) {
   window.history.replaceState(null, "", "#top");
 }
 
-export function Header() {
-  const { t } = useTranslation();
-  const prefersReducedMotion = useReducedMotion();
+function useScrolled(threshold: number): boolean {
   const [scrolled, setScrolled] = useState(false);
-
-  const navLinks = [
-    { href: "#about", label: t.nav.about },
-    { href: "#founder", label: t.nav.founder },
-    { href: "#top", label: t.nav.projects },
-  ] as const;
 
   useEffect(() => {
     let rafId = 0;
-
     const update = () => {
-      const next = window.scrollY > SCROLL_THRESHOLD_PX;
+      const next = window.scrollY > threshold;
       setScrolled((prev) => (prev === next ? prev : next));
     };
-
     const onScroll = () => {
       if (rafId) {
         return;
@@ -49,14 +39,22 @@ export function Header() {
 
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-
     return () => {
       window.removeEventListener("scroll", onScroll);
       if (rafId) {
         window.cancelAnimationFrame(rafId);
       }
     };
-  }, []);
+  }, [threshold]);
+
+  return scrolled;
+}
+
+export function Header() {
+  const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
+  const scrolled = useScrolled(SCROLL_THRESHOLD_PX);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <motion.header
@@ -70,49 +68,85 @@ export function Header() {
       }
     >
       <div className={`page-canvas-scale-wrap ${styles.canvasScaleWrap}`}>
-        <div
-          className={`${styles.shell} ${scrolled ? styles.shellScrolled : ""}`}
-        >
-          <a
-            className={styles.logo}
-            href="#top"
-            aria-label="Restormania"
-            onClick={scrollToPageTop}
-          >
-            <Image
-              src="/assets/header-logo-pill.png"
-              alt=""
-              width={86}
-              height={56}
-              priority
-            />
-          </a>
-
-          <nav className={styles.nav} aria-label={t.nav.main}>
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                className={styles.navLink}
-                href={link.href}
-                onClick={link.href === "#top" ? scrollToPageTop : undefined}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className={styles.actions}>
+        <div className={`${styles.shell} ${scrolled ? styles.shellScrolled : ""}`}>
+          <div className={styles.center}>
+            <a
+              className={styles.logo}
+              href="#top"
+              aria-label={t.nav.main}
+              onClick={scrollToPageTop}
+            >
+              <Image
+                className={styles.logoMark}
+                src="/assets/home/header/mark-word.svg"
+                alt=""
+                width={75}
+                height={48}
+                priority
+              />
+            </a>
             <div className={styles.brandActions}>
-              <PillLink href={PIDEH_URL} variant="pideh" size="sm">
-                Pideh
+              <PillLink
+                href="#projects"
+                variant="solid"
+                size="sm"
+                className={`${styles.navPill} ${styles.projectsPill}`}
+              >
+                {t.nav.ourProjects}
               </PillLink>
-              <PillLink href={KAMANCHA_URL} variant="kamancha" size="sm">
-                Kamancha
+              <PillLink
+                href={KAMANCHA_URL}
+                variant="solid"
+                size="sm"
+                className={`${styles.navPill} ${scrolled ? styles.kamanchaScrolled : ""}`}
+              >
+                {t.nav.kamancha}
               </PillLink>
             </div>
+          </div>
+          <div className={styles.actions}>
             <LanguageSwitcher />
           </div>
+          <button
+            className={styles.menuButton}
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            aria-label="Menu"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ""}`} aria-hidden>
+              <span />
+              <span />
+              <span />
+            </span>
+          </button>
         </div>
+        {menuOpen ? (
+          <nav className={styles.mobileNav} id="mobile-nav" onClick={() => setMenuOpen(false)}>
+            <div className={styles.mobileNavRow}>
+              <PillLink
+                href="#news"
+                variant="solid"
+                size="sm"
+                className={`${styles.navPill} ${styles.projectsPill}`}
+              >
+                {t.nav.ourProjects}
+              </PillLink>
+              <PillLink
+                href={KAMANCHA_URL}
+                variant="solid"
+                size="sm"
+                className={`${styles.navPill} ${styles.kamanchaScrolled}`}
+              >
+                {t.nav.kamancha}
+              </PillLink>
+              <div onClick={(event) => event.stopPropagation()}>
+                <LanguageSwitcher />
+              </div>
+            </div>
+          </nav>
+        ) : null}
       </div>
     </motion.header>
   );

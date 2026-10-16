@@ -28,6 +28,17 @@
   transform: scale(0.98);
 }
 
+@media (max-width: 743px) {
+  .switcher {
+    margin-left: 0;
+  }
+
+  .trigger {
+    width: 48px;
+    height: 48px;
+  }
+}
+
 .globe {
   display: block;
   width: 18px;

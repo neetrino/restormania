@@ -6,6 +6,8 @@ export type Messages = {
     founder: string;
     projects: string;
     main: string;
+    kamancha: string;
+    ourProjects: string;
   };
   hero: {
     subtitle: string;
@@ -24,7 +26,6 @@ export type Messages = {
     bio: string;
   };
   footer: {
-    headline: string;
     navigation: string;
     contact: string;
     about: string;
@@ -32,8 +33,6 @@ export type Messages = {
     contactLink: string;
     address: string;
     openPositions: string;
-    copyright: string;
-    createdBy: string;
   };
   careers: {
     title: string;
@@ -65,6 +64,8 @@ export const messages: Record<Locale, Messages> = {
       founder: "Հիմնադիր",
       projects: "Նախագծեր",
       main: "Հիմնական",
+      kamancha: "Քամանչա",
+      ourProjects: "Restormania Blog",
     },
     hero: {
       subtitle: "Երկու վայր, մեկ պատմություն",
@@ -87,7 +88,6 @@ export const messages: Record<Locale, Messages> = {
       bio: "Արեգ Գևորգյանը հայ ռեստորատոր, ձեռնարկատեր և Kamancha ռեստորանների, Restormania և Pideh նախագծի հիմնադիր-տնօրենն է, որի մասնագիտական գործունեությունը հիմնականում կենտրոնացած է ռեստորանային բիզնեսի, հայկական գաստրոնոմիայի և հյուրընկալության ոլորտների զարգացման վրա։\n\nՌեստորանային ոլորտում նրա առաջին խոշոր նախագծերից մեկը Armat Restaurant-ն էր, որը հիմնադրվել է 2017 թվականին։ Հետագայում ձևավորվել և զարգացել են Kamancha, Pideh, Kamancha Factory և Kamancha Tapaka Rooms նախագծերը՝ ընդգրկելով ռեստորանային գործունեության, արագ սննդի և սննդի առաքման տարբեր ուղղություններ։",
     },
     footer: {
-      headline: "Երկու վայր, մեկ պատմություն",
       navigation: "Նավիգացիա",
       contact: "Կոնտակտ",
       about: "Մեր մասին",
@@ -95,8 +95,6 @@ export const messages: Record<Locale, Messages> = {
       contactLink: "Կապ",
       address: "Աբովյան 23, Երևան, Հայաստան",
       openPositions: "Ազատ Հաստիքներ",
-      copyright: "© 2026 | All rights reserved",
-      createdBy: "Created by",
     },
     careers: {
       title: "Ազատ հաստիքներ",
@@ -126,6 +124,8 @@ export const messages: Record<Locale, Messages> = {
       founder: "Founder",
       projects: "Projects",
       main: "Main",
+      kamancha: "Kamancha",
+      ourProjects: "Restormania Blog",
     },
     hero: {
       subtitle: "Two places, one story",
@@ -148,7 +148,6 @@ export const messages: Record<Locale, Messages> = {
       bio: "Areg Gevorgyan is an Armenian restaurateur, entrepreneur, and founding director of the Kamancha restaurants, Restormania, and the Pideh project. His work focuses on restaurant business, Armenian gastronomy, and hospitality.\n\nOne of his first major restaurant projects was Armat Restaurant, founded in 2017. Later came Kamancha, Pideh, Kamancha Factory, and Kamancha Tapaka Rooms — spanning restaurants, fast casual, and food delivery.",
     },
     footer: {
-      headline: "Two places, one story",
       navigation: "Navigation",
       contact: "Contact",
       about: "About us",
@@ -156,8 +155,6 @@ export const messages: Record<Locale, Messages> = {
       contactLink: "Contact",
       address: "23 Abovyan St, Yerevan, Armenia",
       openPositions: "Open Positions",
-      copyright: "© 2026 | All rights reserved",
-      createdBy: "Created by",
     },
     careers: {
       title: "Open positions",
@@ -187,6 +184,8 @@ export const messages: Record<Locale, Messages> = {
       founder: "Основатель",
       projects: "Проекты",
       main: "Основная",
+      kamancha: "Каманча",
+      ourProjects: "Restormania Blog",
     },
     hero: {
       subtitle: "Два места, одна история",
@@ -209,7 +208,6 @@ export const messages: Record<Locale, Messages> = {
       bio: "Арег Геворгян — армянский ресторатор, предприниматель и основатель-директор ресторанов Kamancha, Restormania и проекта Pideh. Его работа сосредоточена на ресторанном бизнесе, армянской гастрономии и гостеприимстве.\n\nОдним из первых крупных проектов стал Armat Restaurant, основанный в 2017 году. Затем появились Kamancha, Pideh, Kamancha Factory и Kamancha Tapaka Rooms — от ресторанов до быстрого питания и доставки.",
     },
     footer: {
-      headline: "Два места, одна история",
       navigation: "Навигация",
       contact: "Контакты",
       about: "О нас",
@@ -217,8 +215,6 @@ export const messages: Record<Locale, Messages> = {
       contactLink: "Связь",
       address: "ул. Абовяна 23, Ереван, Армения",
       openPositions: "Открытые вакансии",
-      copyright: "© 2026 | All rights reserved",
-      createdBy: "Created by",
     },
     careers: {
       title: "Открытые вакансии",

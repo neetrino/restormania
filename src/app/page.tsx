@@ -1,9 +1,8 @@
-import { AboutSection } from "@/components/about/AboutSection";
-import { BrandBanners } from "@/components/brands/BrandBanners";
 import { Footer } from "@/components/footer/Footer";
-import { FounderSection } from "@/components/founder/FounderSection";
 import { Header } from "@/components/header/Header";
-import { Hero } from "@/components/hero/Hero";
+import { IntroSection } from "@/components/home/IntroSection";
+import { NewsSection } from "@/components/home/NewsSection";
+import { ProjectsSection } from "@/components/home/ProjectsSection";
 import {
   CanvasScaler,
   PageCanvasScaleRuntime,
@@ -17,10 +16,9 @@ export default function HomePage() {
       <Header />
       <CanvasScaler>
         <main>
-          <Hero />
-          <BrandBanners />
-          <AboutSection />
-          <FounderSection />
+          <IntroSection />
+          <ProjectsSection />
+          <NewsSection />
         </main>
         <Footer />
       </CanvasScaler>
