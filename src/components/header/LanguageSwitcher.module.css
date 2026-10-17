@@ -14,7 +14,7 @@
   padding: 0;
   color: var(--color-ink);
   background: var(--color-white);
-  border: 1px solid rgba(1, 0, 0, 0.08);
+  border: 1px solid rgba(1, 0, 0, 0.22);
   border-radius: var(--radius-pill);
   box-shadow: 0 1px 2px rgba(1, 0, 0, 0.04);
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -37,6 +37,18 @@
     width: 48px;
     height: 48px;
   }
+
+  .triggerCard {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-pill);
+    box-shadow: none;
+  }
+
+  .triggerCard .globe {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .globe {
@@ -49,7 +61,7 @@
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  z-index: 60;
+  z-index: 120;
   min-width: 72px;
   padding: 6px;
   list-style: none;

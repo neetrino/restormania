@@ -37,7 +37,7 @@ function GlobeIcon() {
   );
 }
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ card = false }: { card?: boolean }) {
   const { locale, setLocale, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -73,7 +73,7 @@ export function LanguageSwitcher() {
     <div className={styles.switcher} ref={rootRef}>
       <button
         type="button"
-        className={styles.trigger}
+        className={`${styles.trigger} ${card ? styles.triggerCard : ""}`}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
