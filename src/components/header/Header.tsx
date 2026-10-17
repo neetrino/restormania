@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState, type MouseEvent } from "react";
 import { easeOutExpo } from "@/components/motion/presets";
 import { PillLink } from "@/components/ui/PillLink";
@@ -122,31 +122,45 @@ export function Header() {
             </span>
           </button>
         </div>
-        {menuOpen ? (
-          <nav className={styles.mobileNav} id="mobile-nav" onClick={() => setMenuOpen(false)}>
-            <div className={styles.mobileNavRow}>
-              <PillLink
-                href="#news"
-                variant="solid"
-                size="sm"
-                className={`${styles.navPill} ${styles.projectsPill}`}
-              >
-                {t.nav.ourProjects}
-              </PillLink>
-              <PillLink
-                href={KAMANCHA_URL}
-                variant="solid"
-                size="sm"
-                className={`${styles.navPill} ${styles.kamanchaScrolled}`}
-              >
-                {t.nav.kamancha}
-              </PillLink>
-              <div onClick={(event) => event.stopPropagation()}>
-                <LanguageSwitcher />
+        <AnimatePresence>
+          {menuOpen ? (
+            <motion.nav
+              className={styles.mobileNav}
+              id="mobile-nav"
+              initial={prefersReducedMotion ? false : { opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={prefersReducedMotion ? undefined : { opacity: 0, y: -10 }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { duration: 0.32, ease: easeOutExpo }
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              <div className={styles.mobileNavRow}>
+                <PillLink
+                  href="#news"
+                  variant="solid"
+                  size="sm"
+                  className={`${styles.navPill} ${styles.projectsPill}`}
+                >
+                  {t.nav.ourProjects}
+                </PillLink>
+                <PillLink
+                  href={KAMANCHA_URL}
+                  variant="solid"
+                  size="sm"
+                  className={`${styles.navPill} ${styles.kamanchaScrolled}`}
+                >
+                  {t.nav.kamancha}
+                </PillLink>
+                <div onClick={(event) => event.stopPropagation()}>
+                  <LanguageSwitcher card />
+                </div>
               </div>
-            </div>
-          </nav>
-        ) : null}
+            </motion.nav>
+          ) : null}
+        </AnimatePresence>
       </div>
     </motion.header>
   );

@@ -1,13 +1,54 @@
 "use client";
 
 import Image from "next/image";
+import { useSyncExternalStore, type ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { fadeUp, slideFromLeft, slideFromRight } from "@/components/motion/presets";
+import type { Variants } from "motion/react";
 import { PillLink } from "@/components/ui/PillLink";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import { KAMANCHA_URL, PIDEH_URL } from "@/lib/brand-links";
 import { HOME_COPY, type HomeCopy } from "./home-copy";
 import styles from "./ProjectsSection.module.css";
+
+const PHONE_QUERY = "(max-width: 743px)";
+
+function subscribePhone(onStoreChange: () => void): () => void {
+  const media = window.matchMedia(PHONE_QUERY);
+  media.addEventListener("change", onStoreChange);
+  return () => media.removeEventListener("change", onStoreChange);
+}
+
+function usePhoneLayout(): boolean {
+  return useSyncExternalStore(
+    subscribePhone,
+    () => window.matchMedia(PHONE_QUERY).matches,
+    () => true,
+  );
+}
+
+/** Slide-in hides cards that only peek at the rail edge. */
+function ProjectCard({
+  className,
+  variants,
+  children,
+}: {
+  className: string;
+  variants: Variants;
+  children: ReactNode;
+}) {
+  const phone = usePhoneLayout();
+
+  if (phone) {
+    return <article className={className}>{children}</article>;
+  }
+
+  return (
+    <Reveal as="article" className={className} variants={variants}>
+      {children}
+    </Reveal>
+  );
+}
 
 export function ProjectsSection() {
   const { locale, t } = useTranslation();
@@ -48,7 +89,7 @@ export function ProjectsSection() {
 
 function TumanyanCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
-    <Reveal as="article" className={styles.tumanyan} variants={slideFromLeft}>
+    <ProjectCard className={styles.tumanyan} variants={slideFromLeft}>
       <div className={styles.photoFrame}>
         <Image
           className={styles.cover}
@@ -70,13 +111,13 @@ function TumanyanCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={KAMANCHA_URL} variant="solid" size="md" className={styles.mobileCta}>
         {more}
       </PillLink>
-    </Reveal>
+    </ProjectCard>
   );
 }
 
 function SaryanCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
-    <Reveal as="article" className={styles.saryan} variants={slideFromRight}>
+    <ProjectCard className={styles.saryan} variants={slideFromRight}>
       <div className={styles.saryanCopy}>
         <h3 className={styles.cardTitle}>{copy.saryanTitle}</h3>
         <p>{copy.saryanBody}</p>
@@ -98,13 +139,13 @@ function SaryanCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={KAMANCHA_URL} variant="solid" size="md" className={styles.mobileCta}>
         {more}
       </PillLink>
-    </Reveal>
+    </ProjectCard>
   );
 }
 
 function FactoryCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
-    <Reveal as="article" className={styles.factory} variants={slideFromLeft}>
+    <ProjectCard className={styles.factory} variants={slideFromLeft}>
       <div className={styles.factoryCopy}>
         <h3 className={`${styles.cardTitle} ${styles.lightTitle}`}>{copy.factoryTitle}</h3>
         <p>{copy.factoryBody}</p>
@@ -130,13 +171,13 @@ function FactoryCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={KAMANCHA_URL} variant="solid" size="md" className={styles.mobileCta}>
         {more}
       </PillLink>
-    </Reveal>
+    </ProjectCard>
   );
 }
 
 function PidehCard({ copy, more }: { copy: HomeCopy; more: string }) {
   return (
-    <Reveal as="article" className={styles.pideh} variants={slideFromRight}>
+    <ProjectCard className={styles.pideh} variants={slideFromRight}>
       <div className={styles.pidehMedia}>
         <div className={styles.pidehSpin}>
           <Image
@@ -158,6 +199,6 @@ function PidehCard({ copy, more }: { copy: HomeCopy; more: string }) {
       <PillLink href={PIDEH_URL} variant="solid" size="md" className={styles.mobileCta}>
         {more}
       </PillLink>
-    </Reveal>
+    </ProjectCard>
   );
 }
