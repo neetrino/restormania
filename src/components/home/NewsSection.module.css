@@ -120,10 +120,11 @@
   }
 
   .title {
-    max-width: none;
-    font-size: 48px;
-    line-height: 0.78;
-    letter-spacing: 0.03em;
+    max-width: 100%;
+    font-size: min(48px, calc((100vw - 44px) / 8.4));
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    overflow-wrap: break-word;
   }
 
   .arrows {
