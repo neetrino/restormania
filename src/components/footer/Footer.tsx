@@ -28,6 +28,9 @@ const STORE_LINKS = [
 
 const BRAND_BLOCKS = [{ name: "Kamancha" }, { name: "Pideh" }] as const;
 
+/** Set to true when Kamancha and Pideh app-store badges should show in the footer. */
+const SHOW_APP_STORES = false;
+
 const CONTACT_ICONS = {
   pin: "M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11zM12 12.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z",
   phone: "M7 4h3l1 4-2 1a11 11 0 0 0 6 6l1-2 4 1v3a2 2 0 0 1-2 2A15 15 0 0 1 5 6a2 2 0 0 1 2-2z",
@@ -75,13 +78,38 @@ const SOCIAL_LINKS = [
     height: 26,
   },
   {
-    href: "https://wa.me/37441181718",
+    href: "https://wa.me/37495711700",
     label: "WhatsApp",
     src: "/assets/social-whatsapp.svg",
     width: 26,
     height: 26,
   },
 ] as const;
+
+function SocialLinks({ className }: { className: string }) {
+  return (
+    <div className={className}>
+      {SOCIAL_LINKS.map((item) => (
+        <a
+          key={item.label}
+          className={styles.socialLink}
+          href={item.href}
+          aria-label={item.label}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            className={styles.socialIcon}
+            src={item.src}
+            alt=""
+            width={item.width}
+            height={item.height}
+          />
+        </a>
+      ))}
+    </div>
+  );
+}
 
 function StoreButtons({ brand }: { brand: string }) {
   return (
@@ -147,50 +175,46 @@ export function Footer() {
           </a>
         </Reveal>
 
-        <Reveal className={styles.columns} variants={fadeUp} child>
+        <Reveal
+          className={
+            SHOW_APP_STORES ? styles.columns : `${styles.columns} ${styles.columnsWithoutStores}`
+          }
+          variants={fadeUp}
+          child
+        >
           <div className={styles.colStart}>
             <h3 className={styles.colTitle}>{t.footer.contact}</h3>
             <div className={styles.contactInfo}>
               <ContactLine icon="pin">{t.footer.address}</ContactLine>
               <ContactLine icon="phone">
-                <a href="tel:+37441181718">+ 374 41 18 17 18</a>
+                <a href="tel:+37495711700">095 711 700</a>
               </ContactLine>
               <ContactLine icon="mail">
                 <a href="mailto:kamancharest@gmail.com">kamancharest@gmail.com</a>
               </ContactLine>
               <ContactLine icon="clock">{copy.hours}</ContactLine>
-              <OpenPositionsButton className={styles.careersButton} />
+              {SHOW_APP_STORES ? (
+                <OpenPositionsButton className={styles.careersButton} />
+              ) : null}
             </div>
           </div>
 
-          <div className={styles.social}>
-            {SOCIAL_LINKS.map((item) => (
-              <a
-                key={item.label}
-                className={styles.socialLink}
-                href={item.href}
-                aria-label={item.label}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  className={styles.socialIcon}
-                  src={item.src}
-                  alt=""
-                  width={item.width}
-                  height={item.height}
-                />
-              </a>
-            ))}
-          </div>
+          {SHOW_APP_STORES ? <SocialLinks className={styles.social} /> : null}
 
-          <div className={styles.colMid}>
-            {BRAND_BLOCKS.map((brand) => (
-              <div className={styles.brandBlock} key={brand.name}>
-                <h3 className={styles.colTitle}>{brand.name}</h3>
-                <StoreButtons brand={brand.name} />
-              </div>
-            ))}
+          <div className={SHOW_APP_STORES ? styles.colMid : `${styles.colMid} ${styles.colMidBottom}`}>
+            {SHOW_APP_STORES ? (
+              BRAND_BLOCKS.map((brand) => (
+                <div className={styles.brandBlock} key={brand.name}>
+                  <h3 className={styles.colTitle}>{brand.name}</h3>
+                  <StoreButtons brand={brand.name} />
+                </div>
+              ))
+            ) : (
+              <>
+                <OpenPositionsButton className={styles.careersButtonAside} />
+                <SocialLinks className={`${styles.social} ${styles.socialUnderButton}`} />
+              </>
+            )}
           </div>
         </Reveal>
 
