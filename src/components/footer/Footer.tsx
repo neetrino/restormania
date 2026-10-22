@@ -75,7 +75,7 @@ const SOCIAL_LINKS = [
     height: 26,
   },
   {
-    href: "https://wa.me/37441181718",
+    href: "https://wa.me/37495711700",
     label: "WhatsApp",
     src: "/assets/social-whatsapp.svg",
     width: 26,
@@ -153,7 +153,7 @@ export function Footer() {
             <div className={styles.contactInfo}>
               <ContactLine icon="pin">{t.footer.address}</ContactLine>
               <ContactLine icon="phone">
-                <a href="tel:+37441181718">+ 374 41 18 17 18</a>
+                <a href="tel:+37495711700">095 711 700</a>
               </ContactLine>
               <ContactLine icon="mail">
                 <a href="mailto:kamancharest@gmail.com">kamancharest@gmail.com</a>
