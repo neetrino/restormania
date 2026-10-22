@@ -76,6 +76,10 @@
   padding: 0;
 }
 
+.columnsWithoutStores {
+  grid-template-columns: 1fr auto;
+}
+
 .colTitle {
   margin: 0 0 24px;
   font-family: var(--font-headline);
@@ -96,6 +100,11 @@
   gap: 24px;
   text-align: right;
   justify-self: end;
+}
+
+.colMidBottom {
+  align-self: stretch;
+  justify-content: flex-end;
 }
 
 .brandBlock {
@@ -147,6 +156,10 @@
   align-self: flex-start;
 }
 
+.careersButtonAside {
+  align-self: flex-end;
+}
+
 .stores {
   display: flex;
   flex-direction: row;
@@ -192,6 +205,21 @@
   justify-content: center;
   gap: 32px;
   padding-bottom: 2px;
+}
+
+.socialStacked {
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: auto;
+  justify-content: flex-start;
+  gap: 20px;
+  padding-bottom: 0;
+}
+
+.socialUnderButton {
+  align-self: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 0;
 }
 
 .socialLink {
@@ -246,7 +274,8 @@
     width: 204px;
   }
 
-  .columns {
+  .columns,
+  .columnsWithoutStores {
     grid-template-columns: 1fr;
     justify-items: start;
     gap: 28px;
@@ -261,6 +290,12 @@
     padding-bottom: 0;
   }
 
+  .socialStacked,
+  .socialUnderButton {
+    align-self: flex-start;
+    justify-content: flex-start;
+  }
+
   .colStart,
   .colMid {
     width: 100%;
@@ -269,8 +304,11 @@
     align-items: flex-start;
   }
 
-  .colMid {
+  .colMid,
+  .colMidBottom {
+    align-self: auto;
     align-items: flex-start;
+    justify-content: flex-start;
   }
 
   .brandBlock {
@@ -287,7 +325,8 @@
     text-align: left;
   }
 
-  .careersButton {
+  .careersButton,
+  .careersButtonAside {
     align-self: flex-start;
   }
 
